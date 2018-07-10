@@ -1,0 +1,12 @@
+@backgroundcolor: #222;
+@foregroundcolor: #222;
+@foregroundcoloralt: #eee;
+@foregroundcoloralthover: #fff;
+
+@spacer-height: 60px;
+
+.vendor(@property, @value) {
+    -webkit-@{property}: @value;
+        -ms-@{property}: @value;
+            @{property}: @value;
+}
