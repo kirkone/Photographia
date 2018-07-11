@@ -6,11 +6,14 @@
 body, html {
     height: 100vh;
     font-family: Helvetica, Arial, sans-serif;
-    color: @foregroundcolor;
-    background-color: rgb(20, 20, 30);
+    color: @accentcolor;
+    background-color: @backgroundcolor;
 }
 
 #nav {
+    opacity: 0;
+    -webkit-transition:opacity @duration-default;
+            transition:opacity @duration-default;
     position: absolute;
     z-index: 1;
     left: 0px;
@@ -18,15 +21,10 @@ body, html {
     bottom: 0px;
     width: 200px;
     line-height: @spacer-height;
-    color: @foregroundcolor;
     font-size: 0.9em;
     background: 0 0;
-    border-right: 1px solid rgba(0,0,0,.1);
-    text-transform: lowercase;
-    font-size: 0.9em;
-    letter-spacing: 1px;
     // -webkit-backdrop-filter: blur(10px);
-    background-color: rgba(112, 112, 112, 0.2);
+    background-color: @backgroundcolor-light;
 
     flex-direction: row;
     flex-flow: wrap;
@@ -34,21 +32,20 @@ body, html {
     a {
         padding: 0 2rem;
         text-decoration: none;
-        color: @foregroundcoloralt;
+        color: @accentcolor;
         font-size: 1.2em;
         line-height: @spacer-height;
         display: inline-block;
         width: 100%;
-        transition: background-color 0.3s;
+        transition: background-color @duration-default;
         
         &:first-child{
             font-weight: bold;
         }
     
         &:hover{
-            background-color: rgba(112, 112, 112, 0.2);
-            // -webkit-backdrop-filter: blur(10px);
-            color: @foregroundcoloralthover;
+            background-color: @backgroundcolor-lighter;
+            color: @accentcolor-light;
         }
     }
 }
@@ -66,19 +63,24 @@ label[for="nav-trigger"] {
     height: 30px;
     width: 30px;
     cursor: pointer;
-    filter: drop-shadow(0px 0px 1px rgb(0, 0, 0));
+    filter: drop-shadow(0px 0px 1px @backgroundcolor);
+    transition: left @duration-default;
 
     * {
-        -webkit-transition:all 0.3s;
-                transition:all 0.3s;
+        -webkit-transition:all @duration-default;
+                transition:all @duration-default;
         box-sizing:border-box;
+    }
+
+    &:hover .spinner{
+        background-color:@accentcolor-light;
     }
 
     .spinner {
         position:absolute;
         height:3px;
         width:100%;
-        background-color:#fff;
+        background-color:@accentcolor;
 
         &.diagonal.part-1 {
             top:6px;
@@ -92,11 +94,6 @@ label[for="nav-trigger"] {
             top:22px;
         }
     }
-}
-
-
-.nav-trigger + label, #content {
-    transition: all 0.3s;
 }
   
 .nav-trigger:checked {
@@ -120,11 +117,14 @@ label[for="nav-trigger"] {
     }
 }
 
-.nav-trigger:checked ~ #content {
-    margin-left: 201px;
-    box-shadow: 0 0 5px 5px rgba(20, 20, 30, 0.7);
+.nav-trigger:checked ~ #nav {
+    opacity: 1;
 }
 
+.nav-trigger:checked ~ #content {
+    margin-left: 200px;
+    border-left: 1px solid @backgroundcolor-lighter;
+}
 
 #content{
     position: relative;
@@ -145,11 +145,24 @@ label[for="nav-trigger"] {
         -ms-scroll-snap-points-y: repeat(100vh);
             scroll-snap-points-y: repeat(100vh);
 
+    transition: margin-left @duration-default;
+
+
     article{
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        .info{
+            position: absolute;
+            left: 0;
+            height: 100px;
+            width: 200px;
+            background-color: @backgroundcolor-trans;
+            -webkit-backdrop-filter: blur(10px);
+            // box-shadow: 0 0 10px @backgroundcolor-light;
+        }
 
         img{
             max-width: 100%;
