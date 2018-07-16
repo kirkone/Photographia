@@ -1,5 +1,3 @@
-import ScrollSnap from 'scroll-snap'
-
 if ('scrollSnapType' in document.documentElement.style ||
       'webkitScrollSnapType' in document.documentElement.style ||
       'msScrollSnapType' in document.documentElement.style) {
