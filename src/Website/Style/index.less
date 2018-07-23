@@ -39,6 +39,16 @@ body, html {
         width: 100%;
         transition: background-color @duration-default ease-out, padding-left @duration-default ease-out;
         
+        &::after{
+            content: "";
+            display: block;
+            width: 0;
+            height: 2px;
+            margin: 0 -1.3rem;
+            background-color: @accentcolor-light;
+            transition: width @duration-default;
+        }
+
         &:first-child{
             font-weight: bold;
         }
@@ -47,6 +57,11 @@ body, html {
             background-color: @backgroundcolor-lighter;
             color: @accentcolor-light;
             padding-left: 1.3rem;
+
+            &::after{
+                width: 100%;
+                transition: width @duration-default;
+            }
         }
     }
 }
