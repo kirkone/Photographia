@@ -160,40 +160,59 @@ body > a {
         position:absolute;
         height:3px;
         background-color:@accentcolor;
-        -webkit-transition:background-color @duration-default ease-out;
-                transition:background-color @duration-default ease-out;
-        
+        -webkit-transition:all @duration-default;
+                transition:all @duration-default;
+
         &:nth-child(1) {
-            width:20px;
+            width:18px;
             top:8px;
             -webkit-transform: translateY(-1px) rotate(135deg);
-            transform: translateY(-1px) rotate(135deg);
+                    transform: translateY(-1px) rotate(135deg);
         }
         
         &:nth-child(2) {
             width:25px;
             top:13px;
             -webkit-transform: translateX(5px);
-            transform: translateX(5px);
+                    transform: translateX(5px);
         }
         
         &:nth-child(3) {
-            width:20px;
+            width:18px;
             top:20px;
             -webkit-transform: translateY(-1px) rotate(-135deg);
-            transform: translateY(-1px) rotate(-135deg);
+                    transform: translateY(-1px) rotate(-135deg);
         }
     }
     
     &:hover i{
-        background-color:@accentcolor-light;
+        background-color: @accentcolor;
+
+        &:nth-child(1) {
+            width:25px;
+            top:15px;
+            -webkit-transform: translateY(-1px) rotate(-135deg);
+                    transform: translateY(-1px) rotate(-135deg);
+        }
+        
+        &:nth-child(2) {
+            opacity: 0;
+            width: 0;
+        }
+        
+        &:nth-child(3) {
+            width:25px;
+            top:11px;
+            -webkit-transform: translateY(-1px) rotate(135deg);
+                    transform: translateY(-1px) rotate(135deg);
+        }
     }
 
     span{
         display: block;
         -webkit-transition:opacity @duration-default ease-out;
                 transition:opacity @duration-default ease-out;
-        color: @accentcolor-light;
+        color: @accentcolor;
         font-size: 1.4em;
         padding-left: 40px;
         height: 30px;
