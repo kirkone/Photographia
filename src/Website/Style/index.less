@@ -272,6 +272,59 @@ body > a {
             vertical-align: bottom;
         }
     }
+
+    #image{
+        position: sticky;
+        top:0;
+    }
+    
+    #description{
+        position: relative;
+    
+        > div {
+            padding: 2rem;
+            outline: 1px solid @backgroundcolor;
+            box-shadow: 0px 0px 2rem @backgroundcolor-trans;
+            background-color: @backgroundcolor-trans;
+            -webkit-backdrop-filter: blur(10px);
+                    backdrop-filter: blur(10px);
+            width: 500px;
+            
+            h1{
+                font-size: 1.6em;
+                margin-bottom: 0.8em;
+    
+                &::after{
+                    content: "";
+                    display: block;
+                    height: 2px;
+                    margin: 0 -1rem;
+                    background-color: @accentcolor-light;
+                }
+            }
+    
+            h2{
+                font-size: 1.4em;
+                margin-bottom: 0.7em;
+            }
+            
+            p{
+                font-size: 1.2em;
+                margin-bottom: 0.6em;
+                color: @accentcolor-light;
+            }
+    
+            table{
+                td{
+                    &:first-of-type{
+                        color: @accentcolor-light;
+                        text-align: right;
+                        padding: 0 1rem;
+                    }
+                }
+            }
+        }
+    }
 }
 
 #content.no-snap-fallback{
@@ -290,6 +343,27 @@ body > a {
             border-bottom: 1px solid @backgroundcolor;
         }
 
+    }
+
+    #image{
+        position: fixed;
+        height: 100vh;
+        
+        // this will prevent chrome from disply the image above the scrollbar
+        width: calc(100vw - 17px);
+        
+        img{
+            margin: 0 auto;
+        }
+    }
+    
+    #description{
+        top: 65vh;
+        height: 100vh;
+
+        > div{
+            margin-bottom: 2rem;
+        }
     }
 }
 
