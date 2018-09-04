@@ -9,6 +9,7 @@ body, html {
     letter-spacing: 1px;
     color: @accentcolor;
     background-color: @backgroundcolor;
+    overflow: hidden;
 }
 
 #nav {
@@ -274,11 +275,14 @@ body > a {
     }
 
     #image{
-        position: sticky;
+        position: fixed;
+        right: 0;
+        left: 0;
         top:0;
     }
     
     #description{
+        margin-top: 100vh;
         position: relative;
     
         > div {
@@ -358,8 +362,7 @@ body > a {
     }
     
     #description{
-        top: 65vh;
-        height: 100vh;
+        top: 100px;
 
         > div{
             margin-bottom: 2rem;
