@@ -1,9 +1,18 @@
 @import "variab.less";
 
 /* Micro reset */
-*,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;}
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-body, html {
+body,
+html {
     height: 100vh;
     font-family: Helvetica, Arial, sans-serif;
     letter-spacing: 1px;
@@ -14,8 +23,8 @@ body, html {
 
 #nav {
     opacity: 0;
-    -webkit-transition:opacity @duration-default ease-out;
-            transition:opacity @duration-default ease-out;
+    -webkit-transition: opacity @duration-default ease-out;
+    transition: opacity @duration-default ease-out;
     position: absolute;
     z-index: 1;
     left: 0px;
@@ -29,7 +38,7 @@ body, html {
 
     flex-direction: row;
     flex-flow: wrap;
-    
+
     a {
         padding: 0 1rem;
         text-decoration: none;
@@ -38,9 +47,10 @@ body, html {
         line-height: @spacer-height;
         display: inline-block;
         width: 100%;
-        transition: background-color @duration-default ease-out, padding-left @duration-default ease-out;
-        
-        &::after{
+        transition: background-color @duration-default ease-out,
+            padding-left @duration-default ease-out;
+
+        &::after {
             content: "";
             display: block;
             width: 0;
@@ -50,16 +60,16 @@ body, html {
             transition: width @duration-default;
         }
 
-        &:first-child{
+        &:first-child {
             font-weight: bold;
         }
-    
-        &:hover{
+
+        &:hover {
             background-color: @backgroundcolor-lighter;
             color: @accentcolor-light;
             padding-left: 1.3rem;
 
-            &::after{
+            &::after {
                 width: 100%;
                 transition: width @duration-default;
             }
@@ -71,7 +81,7 @@ body, html {
     position: absolute;
     clip: rect(0, 0, 0, 0);
 }
-  
+
 label[for="nav-trigger"] {
     position: fixed;
     left: 15px;
@@ -84,53 +94,53 @@ label[for="nav-trigger"] {
     transition: left @duration-default;
 
     * {
-        -webkit-transition:all @duration-default;
-                transition:all @duration-default;
-        box-sizing:border-box;
+        -webkit-transition: all @duration-default;
+        transition: all @duration-default;
+        box-sizing: border-box;
     }
 
-    &:hover i{
-        background-color:@accentcolor-light;
+    &:hover i {
+        background-color: @accentcolor-light;
     }
 
     i {
         display: block;
-        position:absolute;
-        height:3px;
-        width:100%;
-        background-color:@accentcolor;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background-color: @accentcolor;
 
         &:nth-child(1) {
-            top:6px;
+            top: 6px;
         }
 
         &:nth-child(2) {
-            top:14px;
+            top: 14px;
         }
 
         &:nth-child(3) {
-            top:22px;
+            top: 22px;
         }
     }
 }
-  
+
 .nav-trigger:checked {
     + label {
         left: @nav-width + 16px;
         > i:nth-child(1) {
             -webkit-transform: translateY(-1px) rotate(-135deg);
-                    transform: translateY(-1px) rotate(-135deg);
-            margin-top:10px;
+            transform: translateY(-1px) rotate(-135deg);
+            margin-top: 10px;
         }
-        
+
         > i:nth-child(2) {
             opacity: 0;
         }
 
         > i:nth-child(3) {
             -webkit-transform: translateY(1px) rotate(135deg);
-                    transform: translateY(1px) rotate(135deg);
-            margin-top:-12px;
+            transform: translateY(1px) rotate(135deg);
+            margin-top: -12px;
         }
     }
 }
@@ -154,65 +164,64 @@ body > a {
     cursor: pointer;
     filter: drop-shadow(0px 0px 1px @backgroundcolor);
     text-decoration: none;
-    
-    
+
     i {
         display: block;
-        position:absolute;
-        height:3px;
-        background-color:@accentcolor;
-        -webkit-transition:all @duration-default;
-                transition:all @duration-default;
+        position: absolute;
+        height: 3px;
+        background-color: @accentcolor;
+        -webkit-transition: all @duration-default;
+        transition: all @duration-default;
 
         &:nth-child(1) {
-            width:18px;
-            top:8px;
+            width: 18px;
+            top: 8px;
             -webkit-transform: translateY(-1px) rotate(135deg);
-                    transform: translateY(-1px) rotate(135deg);
+            transform: translateY(-1px) rotate(135deg);
         }
-        
+
         &:nth-child(2) {
-            width:25px;
-            top:13px;
+            width: 25px;
+            top: 13px;
             -webkit-transform: translateX(5px);
-                    transform: translateX(5px);
+            transform: translateX(5px);
         }
-        
+
         &:nth-child(3) {
-            width:18px;
-            top:20px;
+            width: 18px;
+            top: 20px;
             -webkit-transform: translateY(-1px) rotate(-135deg);
-                    transform: translateY(-1px) rotate(-135deg);
+            transform: translateY(-1px) rotate(-135deg);
         }
     }
-    
-    &:hover i{
+
+    &:hover i {
         background-color: @accentcolor;
 
         &:nth-child(1) {
-            width:25px;
-            top:15px;
+            width: 25px;
+            top: 15px;
             -webkit-transform: translateY(-1px) rotate(-135deg);
-                    transform: translateY(-1px) rotate(-135deg);
+            transform: translateY(-1px) rotate(-135deg);
         }
-        
+
         &:nth-child(2) {
             opacity: 0;
             width: 0;
         }
-        
+
         &:nth-child(3) {
-            width:25px;
-            top:11px;
+            width: 25px;
+            top: 11px;
             -webkit-transform: translateY(-1px) rotate(135deg);
-                    transform: translateY(-1px) rotate(135deg);
+            transform: translateY(-1px) rotate(135deg);
         }
     }
 
-    span{
+    span {
         display: block;
-        -webkit-transition:opacity @duration-default ease-out;
-                transition:opacity @duration-default ease-out;
+        -webkit-transition: opacity @duration-default ease-out;
+        transition: opacity @duration-default ease-out;
         color: @accentcolor;
         font-size: 1.4em;
         padding-left: 40px;
@@ -222,42 +231,39 @@ body > a {
         opacity: 0;
     }
 
-    &:hover span{
+    &:hover span {
         opacity: 1;
     }
-
-
 }
 
-#content{
+#content {
     position: relative;
     z-index: 100;
     background-color: rgb(20, 20, 30);
     overflow-x: hidden;
     overflow-y: auto;
     margin-left: 0;
-    height:100vh;
+    height: 100vh;
     width: auto;
     flex-direction: row;
     flex-flow: wrap;
     align-items: center;
     -webkit-scroll-snap-type: mandatory;
-        -ms-scroll-snap-type: mandatory;
-            scroll-snap-type: mandatory;
+    -ms-scroll-snap-type: mandatory;
+    scroll-snap-type: mandatory;
     -webkit-scroll-snap-points-y: repeat(100vh);
-        -ms-scroll-snap-points-y: repeat(100vh);
-            scroll-snap-points-y: repeat(100vh);
+    -ms-scroll-snap-points-y: repeat(100vh);
+    scroll-snap-points-y: repeat(100vh);
 
     transition: margin-left @duration-default;
 
-
-    article{
+    article {
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
 
-        .info{
+        .info {
             position: absolute;
             left: 0;
             height: 100px;
@@ -267,38 +273,38 @@ body > a {
             // box-shadow: 0 0 10px @backgroundcolor-light;
         }
 
-        img{
+        img {
             max-width: 100%;
             max-height: 100vh;
             vertical-align: bottom;
         }
     }
 
-    #image{
+    #image {
         position: fixed;
         right: 0;
         left: 0;
-        top:0;
+        top: 0;
     }
-    
-    #description{
+
+    #description {
         margin-top: 100vh;
         position: relative;
-    
+
         > div {
             padding: 2rem;
             outline: 1px solid @backgroundcolor;
             box-shadow: 0px 0px 2rem @backgroundcolor-trans;
             background-color: @backgroundcolor-trans;
             -webkit-backdrop-filter: blur(10px);
-                    backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
             width: 500px;
-            
-            h1{
+
+            h1 {
                 font-size: 1.6em;
                 margin-bottom: 0.8em;
-    
-                &::after{
+
+                &::after {
                     content: "";
                     display: block;
                     height: 2px;
@@ -306,21 +312,21 @@ body > a {
                     background-color: @accentcolor-light;
                 }
             }
-    
-            h2{
+
+            h2 {
                 font-size: 1.4em;
                 margin-bottom: 0.7em;
             }
-            
-            p{
+
+            p {
                 font-size: 1.2em;
                 margin-bottom: 0.6em;
                 color: @accentcolor-light;
             }
-    
-            table{
-                td{
-                    &:first-of-type{
+
+            table {
+                td {
+                    &:first-of-type {
                         color: @accentcolor-light;
                         text-align: right;
                         padding: 0 1rem;
@@ -331,47 +337,45 @@ body > a {
     }
 }
 
-#content.no-snap-fallback{
+#content.no-snap-fallback {
     -webkit-scroll-snap-type: none;
-        -ms-scroll-snap-type: none;
-            scroll-snap-type: none;
+    -ms-scroll-snap-type: none;
+    scroll-snap-type: none;
     -webkit-scroll-snap-points-y: none;
-        -ms-scroll-snap-points-y: none;
-            scroll-snap-points-y: none;
+    -ms-scroll-snap-points-y: none;
+    scroll-snap-points-y: none;
 
-    article{
+    article {
         height: auto;
 
-        &:not(:last-child)
-        {
+        &:not(:last-child) {
             border-bottom: 1px solid @backgroundcolor;
         }
-
     }
 
-    #image{
+    #image {
         position: fixed;
         height: 100vh;
-        
+
         // this will prevent chrome from disply the image above the scrollbar
         width: calc(100vw - 17px);
-        
-        img{
+
+        img {
             margin: 0 auto;
         }
     }
-    
-    #description{
+
+    #description {
         top: 100px;
 
-        > div{
+        > div {
             margin-bottom: 2rem;
         }
     }
 }
 
-@media screen  and (max-width: 864px) {
-    #nav{
+@media screen and (max-width: 864px) {
+    #nav {
         top: 0;
         left: 0;
         width: 100vw;
