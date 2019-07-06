@@ -1,13 +1,17 @@
 {
   "name": "webseite",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web site to show images in a clean way.",
   "scripts": {
     "parcel": "parcel index.html",
     "parcel:build": "parcel build index.html -d publish"
   },
   "author": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kirkone/Photographia.git"
+  },
   "devDependencies": {
     "less": "^3.9.0",
     "parcel-bundler": "1.12.3"
