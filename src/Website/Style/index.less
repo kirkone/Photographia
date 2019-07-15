@@ -13,20 +13,18 @@
 
 body,
 html {
-    height: 100vh;
+    scroll-behavior: smooth;
     font-family: Helvetica, Arial, sans-serif;
     letter-spacing: 1px;
     color: @accentcolor;
     background-color: @backgroundcolor;
-    overflow: hidden;
 }
 
 #nav {
     opacity: 0;
     -webkit-transition: opacity @duration-default ease-out;
     transition: opacity @duration-default ease-out;
-    position: absolute;
-    z-index: 1;
+    position: fixed;
     left: 0px;
     top: 0px;
     bottom: 0px;
@@ -53,6 +51,8 @@ html {
             display: inline-block;
             width: 100%;
             padding: 0 1rem;
+            -webkit-appearance: none;
+            border-radius: 0;
         }
     }
 
@@ -110,7 +110,7 @@ html {
 }
 
 .nav-trigger {
-    position: absolute;
+    position: fixed;
     clip: rect(0, 0, 0, 0);
 }
 
@@ -118,7 +118,7 @@ label[for="nav-trigger"] {
     position: fixed;
     left: 15px;
     top: 15px;
-    z-index: 200;
+    z-index: 300;
     height: 31px;
     width: 35px;
     padding-left: 5px;
@@ -271,24 +271,19 @@ body > a {
 }
 
 #content {
-    -ms-transform: translateZ(0);
     position: relative;
-    z-index: 100;
+    z-index: 200;
     display: flex;
     flex: none;
     flex-flow: column nowrap;
     background-color: rgb(20, 20, 30);
-    overflow-x: hidden;
-    overflow-y: auto;
     margin-left: 0;
-    height: 100vh;
     width: auto;
-    -ms-scroll-snap-type: mandatory;
-    -ms-scroll-snap-points-y: repeat(100vh);
 
     transition: margin-left @duration-default;
 
     article {
+        position: -webkit-sticky;
         position: sticky;
         top: 0;
         height: 100vh;
@@ -296,6 +291,7 @@ body > a {
         justify-content: center;
         align-items: center;
         flex: none;
+        overflow: hidden;
 
         .info {
             position: absolute;
@@ -304,7 +300,6 @@ body > a {
             width: 200px;
             background-color: @backgroundcolor-trans;
             -webkit-backdrop-filter: blur(10px);
-            // box-shadow: @box-shadow-light;
         }
 
         img {
@@ -312,7 +307,7 @@ body > a {
             max-height: 100vh;
             vertical-align: bottom;
             border-top: 1px solid @backgroundcolor;
-            box-shadow: @box-shadow;
+            background-color: @backgroundcolor-light;
         }
 
         &.devider {
@@ -320,9 +315,8 @@ body > a {
                 position: relative;
                 border-top: 1px solid @backgroundcolor;
                 background-color: @backgroundcolor-light;
-                width: calc(~"100vh / 2 * 3");
+                width: calc(~"100vh / 2 * 3" - 1px);
                 max-width: 100%;
-                box-shadow: @box-shadow;
 
                 &::before {
                     content: "";
@@ -336,15 +330,80 @@ body > a {
                     left: 0;
                     bottom: 0;
                     right: 0;
+
+                    > h3 {
+                        padding: 0 60px;
+                        font-size: 1em;
+                        font-weight: normal;
+                        line-height: @spacer-height;
+                        background-color: @backgroundcolor-lighter;
+                        border-bottom: 2px solid @accentcolor-light;
+                    }
+                }
+            }
+
+            .preview {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: stretch;
+                align-content: flex-start;
+
+                > div {
+                    flex: 0 0 auto;
+                    width: 20%;
+                    position: relative;
+
+                    a {
+
+                        &::before {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background-color: @backgroundcolor;
+                            opacity: 0;
+                            transition: opacity @duration-default ease-out;
+                        }
+
+                        &::after {
+                            position: absolute;
+                            bottom: 35px;
+                            left: 15px;
+                            content: "";
+                            display: block;
+                            width: 25px;
+                            height: 25px;
+                            border-left: solid 3px @accentcolor-light;
+                            border-bottom: solid 3px @accentcolor-light;
+
+                            filter: drop-shadow(0px 0px 1px @backgroundcolor);
+                            transform: rotate(-45deg);
+                            transition: opacity @duration-default ease-out;
+                            transition: bottom @duration-default ease-out;
+
+                            opacity: 0;
+                        }
+                        &:hover {
+                            &::before {
+                                opacity: 0.5;
+                            }
+
+                            &::after {
+                                bottom: 15px;
+                                opacity: 1;
+                            }
+                        }
+                    }
+
+                    img {
+                        border-top: none;
+                    }
                 }
             }
         }
-    }
-
-    #footer {
-        border-top: 1px solid @backgroundcolor-lighter;
-        background-color: @backgroundcolor-light;
-        box-shadow: @box-shadow;
     }
 
     #image {
@@ -358,7 +417,6 @@ body > a {
         > div {
             padding: 2rem;
             outline: 1px solid @backgroundcolor;
-            box-shadow: 0px 0px 2rem @backgroundcolor-trans;
             background-color: @backgroundcolor-trans;
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
@@ -402,13 +460,6 @@ body > a {
 }
 
 #content.no-snap-fallback {
-    -webkit-scroll-snap-type: none;
-    -ms-scroll-snap-type: none;
-    scroll-snap-type: none;
-    -webkit-scroll-snap-points-y: none;
-    -ms-scroll-snap-points-y: none;
-    scroll-snap-points-y: none;
-
     article {
         height: auto;
 
@@ -420,7 +471,6 @@ body > a {
     #image {
         position: fixed;
         height: 100vh;
-
         // this will prevent chrome from disply the image above the scrollbar
         width: calc(100vw - 17px);
 
@@ -451,7 +501,7 @@ body > a {
 
     .nav-trigger:checked {
         ~ #nav {
-            z-index: 101;
+            z-index: 250;
         }
 
         ~ #content {
@@ -465,7 +515,11 @@ body > a {
     }
     #content {
         article {
+            overflow: unset;
+
             height: auto;
+            align-items: flex-start;
+
             &:last-child {
                 height: 100vh;
             }
