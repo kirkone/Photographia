@@ -278,6 +278,7 @@ body > a {
     flex-flow: column nowrap;
     background-color: rgb(20, 20, 30);
     margin-left: 0;
+    margin-top: -1px;
     width: auto;
 
     transition: margin-left @duration-default;
@@ -291,7 +292,10 @@ body > a {
         justify-content: center;
         align-items: center;
         flex: none;
-        overflow: hidden;
+
+        &:not(:last-child) {
+            margin-bottom: 2px;
+        }
 
         .info {
             position: absolute;
@@ -302,34 +306,38 @@ body > a {
             -webkit-backdrop-filter: blur(10px);
         }
 
-        img {
+        > div {
+            position: relative;
+            width: 150vh;
             max-width: 100%;
-            max-height: 100vh;
-            vertical-align: bottom;
-            border-top: 1px solid @backgroundcolor;
-            background-color: @backgroundcolor-light;
-        }
+            overflow: hidden;
+            margin-top: -2px;
+            border-top: 2px solid @backgroundcolor;
 
-        &.devider {
+            &::before {
+                content: "";
+                display: block;
+                padding-top: calc(~"100% / 3 * 2");
+                margin-top: -2px;
+                margin-bottom: -2px;
+                background-color: @backgroundcolor;
+            }
+
             > div {
-                position: relative;
-                border-top: 1px solid @backgroundcolor;
-                background-color: @backgroundcolor-light;
-                width: calc(~"100vh / 2 * 3" - 1px);
-                max-width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
 
-                &::before {
-                    content: "";
-                    display: block;
-                    padding-top: 100% / 3 * 2;
+                img {
+                    max-width: 100%;
+                    max-height: 100vh;
+                    vertical-align: bottom;
                 }
 
-                > div {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    bottom: 0;
-                    right: 0;
+                &.devider {
+                    background-color: @backgroundcolor-light;
 
                     > h3 {
                         padding: 0 60px;
@@ -339,67 +347,71 @@ body > a {
                         background-color: @backgroundcolor-lighter;
                         border-bottom: 2px solid @accentcolor-light;
                     }
-                }
-            }
 
-            .preview {
-                display: flex;
-                flex-wrap: wrap;
-                flex-direction: row;
-                justify-content: flex-start;
-                align-items: stretch;
-                align-content: flex-start;
+                    .preview {
+                        display: flex;
+                        flex-wrap: wrap;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        align-items: stretch;
+                        align-content: flex-start;
 
-                > div {
-                    flex: 0 0 auto;
-                    width: 20%;
-                    position: relative;
+                        > div {
+                            flex: 0 0 auto;
+                            width: 20%;
+                            position: relative;
 
-                    a {
+                            a {
+                                &::before {
+                                    content: "";
+                                    display: block;
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                    background-color: @backgroundcolor;
+                                    opacity: 0;
+                                    transition: opacity @duration-default
+                                        ease-out;
+                                }
 
-                        &::before {
-                            content: "";
-                            display: block;
-                            position: absolute;
-                            width: 100%;
-                            height: 100%;
-                            background-color: @backgroundcolor;
-                            opacity: 0;
-                            transition: opacity @duration-default ease-out;
-                        }
+                                &::after {
+                                    position: absolute;
+                                    bottom: 35px;
+                                    left: 15px;
+                                    content: "";
+                                    display: block;
+                                    width: 25px;
+                                    height: 25px;
+                                    border-left: solid 3px @accentcolor-light;
+                                    border-bottom: solid 3px @accentcolor-light;
 
-                        &::after {
-                            position: absolute;
-                            bottom: 35px;
-                            left: 15px;
-                            content: "";
-                            display: block;
-                            width: 25px;
-                            height: 25px;
-                            border-left: solid 3px @accentcolor-light;
-                            border-bottom: solid 3px @accentcolor-light;
+                                    filter: drop-shadow(
+                                        0px 0px 1px @backgroundcolor
+                                    );
+                                    transform: rotate(-45deg);
+                                    transition: opacity @duration-default
+                                        ease-out;
+                                    transition: bottom @duration-default
+                                        ease-out;
 
-                            filter: drop-shadow(0px 0px 1px @backgroundcolor);
-                            transform: rotate(-45deg);
-                            transition: opacity @duration-default ease-out;
-                            transition: bottom @duration-default ease-out;
+                                    opacity: 0;
+                                }
+                                &:hover {
+                                    &::before {
+                                        opacity: 0.5;
+                                    }
 
-                            opacity: 0;
-                        }
-                        &:hover {
-                            &::before {
-                                opacity: 0.5;
+                                    &::after {
+                                        bottom: 15px;
+                                        opacity: 1;
+                                    }
+                                }
                             }
 
-                            &::after {
-                                bottom: 15px;
-                                opacity: 1;
+                            img {
+                                outline: none;
                             }
                         }
-                    }
-
-                    img {
-                        border-top: none;
                     }
                 }
             }
@@ -459,36 +471,6 @@ body > a {
     }
 }
 
-#content.no-snap-fallback {
-    article {
-        height: auto;
-
-        &:not(:last-child) {
-            border-bottom: 1px solid @backgroundcolor;
-        }
-    }
-
-    #image {
-        position: fixed;
-        height: 100vh;
-        // this will prevent chrome from disply the image above the scrollbar
-        width: calc(100vw - 17px);
-
-        img {
-            margin: 0 auto;
-        }
-    }
-
-    #description {
-        top: 65vh;
-        height: 100vh;
-
-        > div {
-            margin-bottom: 2rem;
-        }
-    }
-}
-
 @media screen and (max-width: 864px) {
     #nav {
         top: 0;
@@ -515,8 +497,6 @@ body > a {
     }
     #content {
         article {
-            overflow: unset;
-
             height: auto;
             align-items: flex-start;
 
