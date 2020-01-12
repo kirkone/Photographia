@@ -1,0 +1,43 @@
+@backgroundcolor: rgb(20, 20, 20);
+@backgroundcolor-trans: rgba(20, 20, 20, 0.8);
+@backgroundcolor-light: rgb(38, 38, 38);
+@backgroundcolor-light-trans: rgba(38, 38, 38, 0.8);
+@backgroundcolor-lighter: rgb(56, 56, 56);
+@backgroundcolor-lightest: rgb(74, 74, 74);
+
+@foregroundcolor: rgb(245, 245, 245);
+@foregroundcolor-trans: rgba(245, 245, 245, 0.8);
+@foregroundcolor-light: rgb(227, 227, 227);
+@foregroundcolor-light-trans: rgba(227, 227, 227, 0.8);
+@foregroundcolor-lighter: rgb(209, 209, 209);
+@foregroundcolor-lightest: rgb(191, 191, 191);
+
+
+@box-shadow: 0 0 20px var(--backgroundcolor);
+
+@transition-time: 250ms;
+
+@nav-width: 250px;
+@nav-z-index: 300;
+@spacer-height: 60px;
+
+
+:root {
+    --backgroundcolor: @backgroundcolor;
+    --backgroundcolor-trans: @backgroundcolor-trans;
+    --backgroundcolor-light: @backgroundcolor-light;
+    --backgroundcolor-light-trans: @backgroundcolor-light-trans;
+    --backgroundcolor-lighter: @backgroundcolor-lighter;
+    --backgroundcolor-lightest: @backgroundcolor-lightest;
+    
+    --foregroundcolor: @foregroundcolor;
+    --foregroundcolor-trans: @foregroundcolor-trans;
+    --foregroundcolor-light: @foregroundcolor-light;
+    --foregroundcolor-light-trans: @foregroundcolor-light-trans;
+    --foregroundcolor-lighter: @foregroundcolor-lighter;
+    --foregroundcolor-lightest: @foregroundcolor-lightest;
+
+    --grid-template-columns: repeat(3, 1fr);
+    --grid-article-aspect-ratio: calc(100% / 3 * 2);
+    --grid-min-img-width: 200px;
+}

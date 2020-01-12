@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>talkabout.photos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="./site.less" rel="stylesheet">
+</head>
+
+<body>
+    <input type="checkbox" id="darkmode-trigger" class="darkmode-trigger" />
+    <label for="darkmode-trigger">
+        <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496">
+            <path fill="currentColor"
+                d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z"
+                transform="translate(-8 -8)" /></svg>
+    </label>
+    <input type="radio" id="format-selector-panorama" class="format-selector" checked="checked" name="format">
+    <label for="format-selector-panorama" class="format-selector">
+        <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <rect x="0" y="20" width="100" height="60" stroke="currentColor" fill="currentColor" stroke-width="0"/>
+        </svg>
+    </label>
+    <input type="radio" id="format-selector-square" class="format-selector" name="format">
+    <label for="format-selector-square" class="format-selector">
+        <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <rect x="0" y="0" width="100" height="100" stroke="currentColor" fill="currentColor" stroke-width="0"/>
+        </svg>
+    </label>
+    <input type="radio" id="format-selector-portrait" class="format-selector" name="format">
+    <label for="format-selector-portrait" class="format-selector">
+        <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <rect x="20" y="0" width="60" height="100" stroke="currentColor" fill="currentColor" stroke-width="0"/>
+        </svg>
+    </label>
+    <div class="body">
+        <header>
+            <div>
+                talkabout.photos
+            </div>
+            <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+            <label for="nav-trigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </label>
+
+            <nav>
+                <span id="searchbox">
+                    <label for="search">search: </label>
+                    <input id="search" type="search" placeholder="search">
+                </span>
+                <a href="/" class="active">latest</a>
+                <a href="/">hotest</a>
+                <a href="/">random</a>
+                <span class="devider"></span>
+                <a href="/">by</a>
+                <a href="/">from</a>
+                <a href="/">with</a>
+            </nav>
+        </header>
+
+        <section class="grid">
+            <article>
+                <figure>
+                    <img src="https://test.codez.one/images/generated/000505/450.jpg" alt="">
+                </figure>
+            </article>
+            <article>
+                <figure>
+                    <img src="https://test.codez.one/images/generated/000277/450.jpg" alt="">
+                </figure>
+            </article>
+            <article class="span-3">
+                <figure>
+                    <img src="https://test.codez.one/images/generated/000541/450.jpg" alt="">
+                </figure>
+            </article>
+            <article>
+                <figure>
+                    <img src="https://test.codez.one/images/generated/001137/450.jpg" alt="">
+                </figure>
+            </article>
+            <article class="span-2">
+                <figure>
+                    <img src="https://test.codez.one/images/generated/001218/450.jpg" alt="">
+                </figure>
+            </article>
+            <article>
+                <figure>
+                    <img src="https://test.codez.one/images/generated/001234/450.jpg" alt="">
+                </figure>
+            </article>
+            <article>
+                <figure>
+                    <img src="https://test.codez.one/images/generated/001275/450.jpg" alt="">
+                </figure>
+            </article>
+            <article>
+                <figure>
+                    <img src="https://test.codez.one/images/generated/001701/450.jpg" alt="">
+                </figure>
+            </article>
+            <article>
+                <figure>
+                    <img src="https://test.codez.one/images/generated/001744/450.jpg" alt="">
+                </figure>
+            </article>
+            <article class="span-2">
+                <figure>
+                    <img src="https://test.codez.one/images/generated/001754/450.jpg" alt="">
+                </figure>
+            </article>
+            <article>
+                <figure>
+                    <img src="https://test.codez.one/images/generated/001761/450.jpg" alt="">
+                </figure>
+            </article>
+            <article>
+                <figure>
+                    <img src="https://test.codez.one/images/generated/001776/450.jpg" alt="">
+                </figure>
+            </article>
+            <article>
+                <figure class="span-2">
+                    <img src="https://test.codez.one/images/generated/001786/450.jpg" alt="">
+                </figure>
+            </article>
+        </section>
+    </div>
+
+    <script src="./site.ts"></script>
+</body>
+
+</html>
