@@ -13,8 +13,8 @@
     "url": "https://github.com/kirkone/Photographia.git"
   },
   "devDependencies": {
-    "less": "^3.9.0",
-    "parcel-bundler": "1.12.3"
+    "less": "^3.10.3",
+    "parcel-bundler": "^1.12.4"
   },
   "dependencies": {}
 }
