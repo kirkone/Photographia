@@ -1,17 +1,19 @@
 @import "variab.less";
+@import "font.less";
 
 *, :after, :before {
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body, html {
-    scroll-behavior:smooth;
-    font-family:Arial,Helvetica,sans-serif;
-    letter-spacing:1px;
+    scroll-behavior: smooth;
+    font-family: @font;
+    font-weight: 100;
+    font-size: 1.1em;
 }
 
 .darkmode-trigger {
@@ -29,14 +31,29 @@ label[for=darkmode-trigger] {
     height:25px;
     width:25px;
     cursor:pointer;
-    
-    svg{
-        transition:all @transition-time;
-        color:var(--foregroundcolor);
+
+    border: solid 1px var(--backgroundcolor-lighter);
+    //background: linear-gradient(135deg, rgba(0,0,0,0) 51%, var(--backgroundcolor-lightest) 51%);
+    transition: border-color @transition-time ease;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        bottom: 0;
+        border-bottom: 23px solid var(--foregroundcolor-lighter);
+        border-left: 23px solid transparent;
+
+        transition: border-color @transition-time ease;
     }
 
-    &:hover svg{
-        color:var(--foregroundcolor-light);
+    &:hover {
+        border: solid 1px var(--backgroundcolor-lightest);
+
+        &::before {
+            border-bottom-color: var(--foregroundcolor-lightest);
+        }
     }
 }
 
@@ -48,18 +65,18 @@ label.format-selector {
     width:25px;
     cursor:pointer;
 
-    svg {
-        transition:color @transition-time ease-out;
-        color:var(--backgroundcolor-lighter);
-    }
+    transition: all @transition-time ease-out;
+    border: solid 1px var(--backgroundcolor-lighter);
 
-    &:hover svg {
-        color:var(--backgroundcolor-lightest);
+    &:hover {
+        border-color: var(--backgroundcolor-lightest);
     }
 }
 
 label[for=format-selector-panorama] {
     right:105px;
+    top: 23px;
+    height: 15px;
 }
 
 label[for=format-selector-square] {
@@ -67,26 +84,39 @@ label[for=format-selector-square] {
 }
 
 label[for=format-selector-portrait] {
-    right:49px;
+    right:55px;
+    width: 15px;
 }
 
 input.darkmode-trigger:checked {
-    + label>svg{
-        color:var(--backgroundcolor-light);
-        transform:rotate(-180deg);
+    + label {
+        border-color: var(--foregroundcolor-lightest);
+
+        &::before {
+            border-bottom-color: var(--backgroundcolor-lightest);
+        }
+
+        &:hover {
+            border: solid 1px var(--backgroundcolor-lighter);
+
+            &::before {
+                border-bottom-color: var(--backgroundcolor-lighter);
+            }
+        }
     }
 
-    ~label.format-selector svg{
-        color:var(--foregroundcolor-lightest);
+    ~ label.format-selector {
+        border-color: var(--foregroundcolor-lightest);
     }
 
-    ~label.format-selector:hover svg{
+    ~ label.format-selector:hover {
+        border-color: var(--backgroundcolor-lightest);
         color:var(--backgroundcolor-lightest);
     }
-    ~input.format-selector:checked+label.format-selector svg{
-        color:var(--backgroundcolor);
+    ~ input.format-selector:checked + label.format-selector {
+        border-color: var(--backgroundcolor);
     }
-    ~div.body{
+    ~ div.body{
         --backgroundcolor:#f5f5f5;
         --backgroundcolor-trans:hsla(0,0%,96.1%,0.8);
         --backgroundcolor-light:#e3e3e3;
@@ -105,32 +135,22 @@ input.format-selector {
     clip:rect(0,0,0,0);
     height:0;
     width:0;
-    
+
     &:checked{
         + label.format-selector{
             cursor:default;
 
-            svg{
-                color:var(--foregroundcolor);
-            }
+            border-color: var(--foregroundcolor);
         }
     }
 }
 
 #format-selector-square:checked~div.body {
     --grid-article-aspect-ratio:100%;
-    
-    .grid article figure {
-        box-shadow:inset 0 0 0 1px var(--backgroundcolor-light);
-    }
 }
 
 #format-selector-portrait:checked ~ div.body {
     --grid-article-aspect-ratio:150%;
-
-    .grid article figure {
-        box-shadow:inset 0 0 0 1px var(--backgroundcolor-light);
-    }
 }
 
 div.body, div.body * {
@@ -143,7 +163,9 @@ div.body {
     background-color: var(--backgroundcolor);
     min-height: 100vh;
     padding-top: 60px;
-    
+
+    overflow: hidden;
+
     header{
         > div {
             position: fixed;
@@ -154,8 +176,9 @@ div.body {
             line-height: 60px;
             padding-left: 65px;
             color: var(--foregroundcolor);
-            font-size: 1.2em;
+            font-size: 1.5em;
             box-shadow: 0 0 20px var(--backgroundcolor);
+            text-align: center;
         }
 
         nav{
@@ -165,15 +188,15 @@ div.body {
             top: 0;
             bottom: 0;
             width: 0;
-            font-size: 0.9em;
+            font-size: 1em;
             background: 0 0;
             background-color: var(--backgroundcolor-light);
             overflow: hidden;
             z-index: @nav-z-index;
             pointer-events: none;
             box-shadow: none;
-            border-right: 2px solid var(--foregroundcolor-light);
-            
+            border-right: 1px solid var(--foregroundcolor-light);
+
             #searchbox {
                 label{
                     display:none;
@@ -184,6 +207,7 @@ div.body {
                     background-color: var(--foregroundcolor-light);
                     border: none;
                     font-size: 1.2em;
+                    font-family: @font;
                     line-height: 60px;
                     display: inline-block;
                     width: 100%;
@@ -218,7 +242,7 @@ div.body {
                     right: 0;
                     bottom: 0;
                     width: 0;
-                    height: 2px;
+                    height: 1px;
                     background-color: var(--foregroundcolor-light);
                     transition: width @transition-time;
                 }
@@ -227,12 +251,12 @@ div.body {
                     background-color: var(--backgroundcolor-lighter);
                     color: var(--foregroundcolor-light);
                     padding-left: 1.3rem;
+                    font: 'Raleway Dots';
                 }
 
                 &.active {
                     pointer-events: none;
                     cursor: default;
-                    font-weight: 700;
                 }
 
                 &.active:after, &:hover:after{
@@ -280,7 +304,7 @@ div.body {
             i {
                 display: block;
                 position: absolute;
-                height: 3px;
+                height: 1px;
                 width: 25px;
                 background-color: var(--foregroundcolor);
 
@@ -332,15 +356,20 @@ div.body {
     .grid{
         display: grid;
         grid-template-columns: var(--grid-template-columns);
-        grid-gap: 5px;
+        grid-gap: 0;
         grid-auto-flow: dense;
-        padding: 5px;
+        margin-right: -1px;
+        margin-bottom: -1px;
 
         article{
+            overflow:hidden;
             padding-top:var(--grid-article-aspect-ratio);
             position:relative;
             outline-width:0;
             transition:padding-top @transition-time ease;
+
+            border-right: solid 1px var(--backgroundcolor-light-trans);
+            border-bottom: solid 1px var(--backgroundcolor-light-trans);
 
             :hover{
                 opacity:.65;
@@ -348,10 +377,10 @@ div.body {
 
             figure{
                 position:absolute;
-                top:0;
-                height:100%;
-                width:100%;
-                overflow:hidden;
+                top:-2px;
+                left: -2px;
+                height:calc(100% + 4px);
+                width:calc(100% + 4px);
 
                 img{
                     width:100%;
@@ -368,6 +397,10 @@ div.body {
 @media screen and (max-width: 599px){
     div.body {
         header {
+            > div {
+                text-align: left;
+            }
+
             nav{
                 padding-top: 60px
             }
@@ -376,7 +409,7 @@ div.body {
                 ~ nav{
                     width: 100vw
                 }
-                
+
                 + label{
                     left: 15px
                 }
@@ -424,6 +457,6 @@ div.body {
 }
 @media screen and (min-width:1800px){
     div.body .grid{
-        grid-template-columns:repeat(5,1fr)
+        grid-template-columns:repeat(auto-fit,minmax(400px, 1fr))
     }
 }
