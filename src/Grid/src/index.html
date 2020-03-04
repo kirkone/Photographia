@@ -10,11 +10,19 @@
 </head>
 
 <body>
-    <input type="checkbox" id="darkmode-trigger" class="darkmode-trigger" />
-    <label for="darkmode-trigger"></label>
-    <input type="radio" id="format-selector-panorama" class="format-selector" checked="checked" name="format">
+    <input type="checkbox" id="darkmode-switch" class="function-switch" checked="checked" />
+    <label for="darkmode-switch" class="function-switch"></label>
+
+    <input type="checkbox" id="settings-switch" class="function-switch" checked="checked" />
+    <label for="settings-switch" class="function-switch"></label>
+    <div class="settings" id="settings-backdrop">&#x200b;</div>
+
+    <input type="checkbox" id="image-fit-switch" class="function-switch" checked="checked">
+    <label for="image-fit-switch" class="function-switch"></label>
+
+    <input type="radio" id="format-selector-panorama" class="format-selector" name="format">
     <label for="format-selector-panorama" class="format-selector"></label>
-    <input type="radio" id="format-selector-square" class="format-selector" name="format">
+    <input type="radio" id="format-selector-square" class="format-selector" checked="checked" name="format">
     <label for="format-selector-square" class="format-selector"></label>
     <input type="radio" id="format-selector-portrait" class="format-selector" name="format">
     <label for="format-selector-portrait" class="format-selector"></label>

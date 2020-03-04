@@ -17,7 +17,10 @@
 @foregroundcolor-lightest-trans: rgba(191, 191, 191, 0.8);
 
 
-@box-shadow: 0 0 20px var(--backgroundcolor);
+@box-shadow-top: 0 -10px 30px rgba(0, 0, 0, .1), 0 -1px 8px rgba(0, 0, 0, .2);
+@box-shadow-right: 10px 0 30px rgba(0, 0, 0, 0.1), 1px 0 8px rgba(0, 0, 0, 0.2);
+@box-shadow-down: 0 10px 30px rgba(0, 0, 0, .1), 0 1px 8px rgba(0, 0, 0, .2);
+@box-shadow-left: -10px 0 30px rgba(0, 0, 0, 0.1), -1px 0 8px rgba(0, 0, 0, 0.2);
 
 @transition-time: 250ms;
 
@@ -48,4 +51,6 @@
     --grid-template-columns: repeat(3, 1fr);
     --grid-article-aspect-ratio: calc(100% / 3 * 2);
     --grid-min-img-width: 200px;
+    --grid-image-mode: contain;
+
 }

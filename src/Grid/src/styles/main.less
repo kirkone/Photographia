@@ -16,26 +16,47 @@ body, html {
     font-size: 1.1em;
 }
 
-.darkmode-trigger {
-    position:fixed;
-    clip:rect(0,0,0,0);
-    height:0;
-    width:0;
+input.function-switch {
+    position: fixed;
+    clip: rect(0,0,0,0);
+    height: 0;
+    width: 0;
 }
 
-label[for=darkmode-trigger] {
-    position:fixed;
-    right:18px;
-    top:18px;
-    z-index:301;
-    height:25px;
-    width:25px;
-    cursor:pointer;
+label.function-switch {
+    position: fixed;
+    right: 18px;
+    top: 18px;
+    z-index: 301;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
 
+    color: var(--backgroundcolor-lighter);
     border: solid 1px var(--backgroundcolor-lighter);
-    //background: linear-gradient(135deg, rgba(0,0,0,0) 51%, var(--backgroundcolor-lightest) 51%);
-    transition: border-color @transition-time ease;
+    transition:
+        border-color @transition-time ease-out,
+        color @transition-time ease-out;
 
+    &:hover {
+        color: var(--backgroundcolor-lightest);
+        border: solid 1px var(--backgroundcolor-lightest);
+
+        &::before {
+            border-bottom-color: var(--foregroundcolor-lightest);
+        }
+    }
+
+}
+
+input.function-switch:checked {
+    + label {
+        color: var(--foregroundcolor-lightest);
+        border-color: var(--foregroundcolor-lightest);
+    }
+}
+
+label[for=darkmode-switch] {
     &::before {
         content: "";
         position: absolute;
@@ -45,7 +66,7 @@ label[for=darkmode-trigger] {
         border-bottom: 23px solid var(--foregroundcolor-lighter);
         border-left: 23px solid transparent;
 
-        transition: border-color @transition-time ease;
+        transition: border-color @transition-time ease-out;
     }
 
     &:hover {
@@ -57,13 +78,78 @@ label[for=darkmode-trigger] {
     }
 }
 
+label[for=settings-switch] {
+    right:48px;
+
+    &::after {
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        border-bottom: 2px solid;
+        border-right: 2px solid;
+        transform: rotate(45deg);
+        left: 5px;
+        top: 3px
+    }
+
+    &:hover {
+        border: solid 1px var(--backgroundcolor-lightest);
+
+        &::before {
+            border-bottom-color: var(--foregroundcolor-lightest);
+        }
+    }
+}
+
+
+label[for=image-fit-switch] {
+    right:140px;
+    top: calc(@spacer-height + 18px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all @transition-time ease-out;
+
+    &::before {
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        box-shadow:
+            5px -5px 0 -4px,
+            -5px 5px 0 -4px;
+        left: 5px;
+        top: 5px;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        position: absolute;
+        width: 9px;
+        height: 1px;
+        background: currentColor;
+        transform: rotate(-45deg);
+        top: 11px;
+        left: 7px
+    }
+}
+
 label.format-selector {
-    position:fixed;
-    top:18px;
-    z-index:301;
-    height:25px;
-    width:25px;
-    cursor:pointer;
+    position: fixed;
+    top: calc(@spacer-height + 18px);
+    z-index: 301;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
 
     transition: all @transition-time ease-out;
     border: solid 1px var(--backgroundcolor-lighter);
@@ -75,7 +161,7 @@ label.format-selector {
 
 label[for=format-selector-panorama] {
     right:105px;
-    top: 23px;
+    top: calc(@spacer-height + 23px);
     height: 15px;
 }
 
@@ -88,15 +174,35 @@ label[for=format-selector-portrait] {
     width: 15px;
 }
 
-input.darkmode-trigger:checked {
+#darkmode-switch:checked {
     + label {
-        border-color: var(--foregroundcolor-lightest);
+        &::before {
+            border-bottom-color: var(--backgroundcolor-lighter);
+        }
+    }
 
+    ~ label.function-switch {
+        border-color: var(--foregroundcolor-lightest);
+        color:var(--foregroundcolor-lightest);
+    }
+    ~ label.function-switch:hover {
+        border-color: var(--backgroundcolor-lightest);
+        color:var(--backgroundcolor-lightest);
+    }
+    ~ input.function-switch:checked + label.function-switch {
+        color: var(--backgroundcolor);
+        border-color: var(--backgroundcolor);
+    }
+
+    ~ label.format-selector {
+        color: var(--foregroundcolor-lightest);
+        border-color: var(--foregroundcolor-lightest);
         &::before {
             border-bottom-color: var(--backgroundcolor-lightest);
         }
 
         &:hover {
+            color: var(--backgroundcolor-lighter);
             border: solid 1px var(--backgroundcolor-lighter);
 
             &::before {
@@ -105,18 +211,16 @@ input.darkmode-trigger:checked {
         }
     }
 
-    ~ label.format-selector {
-        border-color: var(--foregroundcolor-lightest);
-    }
-
     ~ label.format-selector:hover {
         border-color: var(--backgroundcolor-lightest);
         color:var(--backgroundcolor-lightest);
     }
     ~ input.format-selector:checked + label.format-selector {
+        color: var(--backgroundcolor);
         border-color: var(--backgroundcolor);
     }
-    ~ div.body{
+
+    ~ *{
         --backgroundcolor:#f5f5f5;
         --backgroundcolor-trans:hsla(0,0%,96.1%,0.8);
         --backgroundcolor-light:#e3e3e3;
@@ -127,6 +231,56 @@ input.darkmode-trigger:checked {
         --foregroundcolor-light:#262626;
         --foregroundcolor-light-trans:rgba(38,38,38,0.8);
         --foregroundcolor-lighter:#383838;
+    }
+}
+
+#settings-backdrop {
+    position: fixed;
+    display: block;
+    z-index: calc(@nav-z-index - 2);
+    top: @spacer-height;
+    right: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility @transition-time ease-out, opacity @transition-time ease-out;
+
+    backdrop-filter: blur(10px) saturate(125%);
+    line-height: 60px;
+    font-size: 1.5em;
+    box-shadow: @box-shadow-down;
+
+    background-color: var(--backgroundcolor-light-trans);
+    color: var(--foregroundcolor);
+}
+
+#settings-switch:checked {
+    + label {
+        color: var(--foregroundcolor-lightest);
+        border-color: var(--foregroundcolor-lightest);
+    }
+
+    &:checked {
+        ~ #settings-backdrop {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ~ label.function-switch {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ~ label.format-selector {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+#image-fit-switch:checked {
+    ~ div.body {
+        --grid-image-mode: cover;
     }
 }
 
@@ -145,7 +299,7 @@ input.format-selector {
     }
 }
 
-#format-selector-square:checked~div.body {
+#format-selector-square:checked ~ div.body {
     --grid-article-aspect-ratio:100%;
 }
 
@@ -162,7 +316,7 @@ div.body {
     color: var(--foregroundcolor);
     background-color: var(--backgroundcolor);
     min-height: 100vh;
-    padding-top: 60px;
+    padding-top: @spacer-height;
 
     overflow: hidden;
 
@@ -173,12 +327,12 @@ div.body {
             z-index: calc(@nav-z-index - 1);
             width: 100%;
             background-color: var(--backgroundcolor-light-trans);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px) saturate(125%);
             line-height: 60px;
             padding-left: 65px;
             color: var(--foregroundcolor);
             font-size: 1.5em;
-            box-shadow: 0 0 20px var(--backgroundcolor);
+            box-shadow: @box-shadow-down;
             text-align: center;
 
             @supports not (backdrop-filter: blur(10px)) {
@@ -197,7 +351,7 @@ div.body {
             font-size: 1em;
             background: 0 0;
             background-color: var(--backgroundcolor-light-trans);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px) saturate(125%);
             overflow: hidden;
             z-index: @nav-z-index;
             pointer-events: none;
@@ -256,7 +410,7 @@ div.body {
                     width: 0;
                     height: 1px;
                     background-color: var(--foregroundcolor-light);
-                    transition: width @transition-time;
+                    transition: width @transition-time  ease-out;
                 }
 
                 &.active, &:hover {
@@ -266,7 +420,7 @@ div.body {
                     @supports not (backdrop-filter: blur(10px)) {
                         background-color: var(--backgroundcolor-lighter);
                         backdrop-filter: none;
-                    }        
+                    }
                 }
 
                 &.active {
@@ -274,15 +428,15 @@ div.body {
                     cursor: default;
                 }
 
-                &.active:after, &:hover:after{
+                &.active:after, &:hover:after {
                     width: calc(100% - 1rem);
-                    transition:width @transition-time;
+                    transition: width @transition-time ease-out;
                 }
 
-                &.devider{
-                    pointer-events:none;
-                    cursor:default;
-                    line-height:0;
+                &.devider {
+                    pointer-events: none;
+                    cursor: default;
+                    line-height: 0;
                 }
             }
         }
@@ -307,8 +461,8 @@ div.body {
             transition:left @transition-time;
 
             * {
-                -webkit-transition: all @transition-time;
-                transition: all @transition-time;
+                -webkit-transition: all @transition-time ease-out;
+                transition: all @transition-time ease-out;
                 box-sizing: border-box;
             }
 
@@ -363,7 +517,7 @@ div.body {
             ~nav {
                 width: @nav-width;
                 pointer-events:all;
-                box-shadow:0 0 20px var(--backgroundcolor);
+                box-shadow: @box-shadow-right;
             }
         }
     }
@@ -371,36 +525,33 @@ div.body {
     .grid{
         display: grid;
         grid-template-columns: var(--grid-template-columns);
-        grid-gap: 0;
+        grid-gap: @spacer-height;
         grid-auto-flow: dense;
-        margin-right: -1px;
-        margin-bottom: -1px;
+        margin: @spacer-height;
 
-        article{
-            overflow:hidden;
-            padding-top:var(--grid-article-aspect-ratio);
-            position:relative;
-            outline-width:0;
-            transition:padding-top @transition-time ease;
+        article {
+            overflow: hidden;
+            padding-top: var(--grid-article-aspect-ratio);
+            position: relative;
+            transition: padding-top @transition-time ease-out;
+            box-shadow: @box-shadow-down;
 
-            border-right: solid 1px var(--backgroundcolor-light-trans);
-            border-bottom: solid 1px var(--backgroundcolor-light-trans);
-
-            :hover{
-                
+            &:hover {
             }
 
-            figure{
-                position:absolute;
-                top:-2px;
-                left: -2px;
-                height:calc(100% + 4px);
-                width:calc(100% + 4px);
+            figure {
+                position: absolute;
+                top: -3%;
+                left: -3%;
+                height: calc(100% + 6%);
+                width: calc(100% + 6%);
 
-                img{
-                    width:100%;
-                    height:100%;
-                    object-fit:contain;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: var(--grid-image-mode);
+                    transition: object-fit @transition-time ease-out;
                 }
             }
         }
