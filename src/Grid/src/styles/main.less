@@ -172,13 +172,19 @@ div.body {
             top: 0;
             z-index: calc(@nav-z-index - 1);
             width: 100%;
-            background-color: var(--backgroundcolor-light);
+            background-color: var(--backgroundcolor-light-trans);
+            backdrop-filter: blur(10px);
             line-height: 60px;
             padding-left: 65px;
             color: var(--foregroundcolor);
             font-size: 1.5em;
             box-shadow: 0 0 20px var(--backgroundcolor);
             text-align: center;
+
+            @supports not (backdrop-filter: blur(10px)) {
+                background-color: var(--backgroundcolor-light);
+                backdrop-filter: none;
+            }
         }
 
         nav{
@@ -190,12 +196,18 @@ div.body {
             width: 0;
             font-size: 1em;
             background: 0 0;
-            background-color: var(--backgroundcolor-light);
+            background-color: var(--backgroundcolor-light-trans);
+            backdrop-filter: blur(10px);
             overflow: hidden;
             z-index: @nav-z-index;
             pointer-events: none;
             box-shadow: none;
             border-right: 1px solid var(--foregroundcolor-light);
+
+            @supports not (backdrop-filter: blur(10px)) {
+                background-color: var(--backgroundcolor-light);
+                backdrop-filter: none;
+            }
 
             #searchbox {
                 label{
@@ -248,10 +260,13 @@ div.body {
                 }
 
                 &.active, &:hover {
-                    background-color: var(--backgroundcolor-lighter);
                     color: var(--foregroundcolor-light);
                     padding-left: 1.3rem;
-                    font: 'Raleway Dots';
+
+                    @supports not (backdrop-filter: blur(10px)) {
+                        background-color: var(--backgroundcolor-lighter);
+                        backdrop-filter: none;
+                    }        
                 }
 
                 &.active {
@@ -372,7 +387,7 @@ div.body {
             border-bottom: solid 1px var(--backgroundcolor-light-trans);
 
             :hover{
-                opacity:.65;
+                
             }
 
             figure{
