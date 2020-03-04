@@ -15,9 +15,9 @@
     "url": "https://github.com/kirkone/KK.AspNetCore.Images.git"
   },
   "devDependencies": {
-    "less": "^3.10.3",
+    "less": "^3.11.1",
     "parcel-bundler": "^1.12.4",
-    "typescript": "^3.7.4"
+    "typescript": "^3.8.3"
   },
   "dependencies": {}
 }
