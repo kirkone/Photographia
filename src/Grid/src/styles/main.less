@@ -277,12 +277,12 @@ div.body {
         }
 
         nav{
-            transition: width @transition-time ease-out;
+            transition: transform @transition-time ease-out;
             position: fixed;
-            left: -2px;
+            left: 0;
             top: 0;
             bottom: 0;
-            width: 0;
+            width: @nav-width;
             font-size: 1em;
             background: 0 0;
             background-color: var(--backgroundcolor-light-trans);
@@ -292,6 +292,7 @@ div.body {
             pointer-events: none;
             box-shadow: none;
             border-right: 1px solid var(--foregroundcolor-light);
+            transform: translateX(-@nav-width);
 
             @supports not (backdrop-filter: blur(10px)) {
                 background-color: var(--backgroundcolor-light);
@@ -393,7 +394,7 @@ div.body {
             padding-left: 5px;
             cursor: pointer;
             filter: drop-shadow(0 0 1px var(--backgroundcolor));
-            transition: left @transition-time;
+            transition: transform @transition-time ease-out;
 
             * {
                 -webkit-transition: all @transition-time ease-out;
@@ -427,7 +428,8 @@ div.body {
 
         .nav-trigger:checked {
             + label {
-                left: calc(@nav-width + 16px);
+                //left: calc(@nav-width + 16px);
+                transform: translateX(@nav-width);
 
                 > i{
                     &:first-child {
@@ -450,7 +452,7 @@ div.body {
             }
 
             ~nav {
-                width: @nav-width;
+                transform: translateX(0);
                 pointer-events: all;
                 box-shadow: @box-shadow-right;
             }
@@ -468,8 +470,12 @@ div.body {
             overflow: hidden;
             padding-top: var(--grid-article-aspect-ratio);
             position: relative;
-            transition: padding-top @transition-time ease-out;
+            transition: box-shadow @transition-time ease-out;
             box-shadow: @box-shadow-down;
+
+            &:hover {
+                box-shadow: @box-shadow-down, @box-shadow-right
+            }
 
             figure {
                 position: absolute;
@@ -477,7 +483,6 @@ div.body {
                 left: -3%;
                 height: calc(100% + 6%);
                 width: calc(100% + 6%);
-
 
                 img {
                     width: 100%;
@@ -500,16 +505,18 @@ div.body {
             }
 
             nav{
-                padding-top: 60px
+                padding-top: 60px;
+                width: 100vw;
+                transform: translateX(-100%)
             }
 
             .nav-trigger:checked {
                 ~ nav{
-                    width: 100vw
+                    transform: translateX(0)
                 }
 
                 + label{
-                    left: 15px
+                    transform: translateX(0);
                 }
             }
         }
