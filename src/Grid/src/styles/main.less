@@ -16,18 +16,73 @@ body, html {
     font-size: 1.1em;
 }
 
-input.function-switch {
+input.settings-input {
     position: fixed;
     clip: rect(0,0,0,0);
     height: 0;
     width: 0;
 }
 
-label.function-switch {
-    position: fixed;
+label[for=darkmode-switch] {
     right: 18px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        bottom: 0;
+        border-bottom: 23px solid var(--foregroundcolor-lighter);
+        border-left: 23px solid transparent;
+    }
+
+    &:hover {
+        &::before {
+            border-bottom-color: var(--foregroundcolor-lightest);
+        }
+    }
+}
+
+#darkmode-switch:checked {
+    + label {
+        &:hover {
+            &::before {
+                border-bottom-color: var(--backgroundcolor-lightest);
+            }
+        }
+    }
+
+    ~ label.settings-label {
+        border-color: var(--foregroundcolor-lightest);
+        color:var(--foregroundcolor-lightest);
+    }
+    ~ label.settings-label:hover {
+        border-color: var(--foregroundcolor-lightest);
+        color:var(--foregroundcolor-lightest);
+    }
+    ~ input.settings-input:checked + label.settings-label {
+        color: var(--foregroundcolor-lighter);
+        border-color: var(--foregroundcolor-lighter);
+    }
+
+    ~ *{
+        --backgroundcolor:#f5f5f5;
+        --backgroundcolor-trans:hsla(0,0%,96.1%,0.8);
+        --backgroundcolor-light:#e3e3e3;
+        --backgroundcolor-light-trans:hsla(0,0%,89%,0.8);
+        --backgroundcolor-lighter:#d1d1d1;
+        --foregroundcolor:#141414;
+        --foregroundcolor-trans:rgba(20,20,20,0.8);
+        --foregroundcolor-light:#262626;
+        --foregroundcolor-light-trans:rgba(38,38,38,0.8);
+        --foregroundcolor-lighter:#383838;
+    }
+}
+
+label.settings-label {
+    position: fixed;
     top: 18px;
-    z-index: 301;
+    z-index: calc(@nav-z-index + 1);
     height: 25px;
     width: 25px;
     cursor: pointer;
@@ -41,40 +96,10 @@ label.function-switch {
     &:hover {
         color: var(--backgroundcolor-lightest);
         border: solid 1px var(--backgroundcolor-lightest);
-
-        &::before {
-            border-bottom-color: var(--foregroundcolor-lightest);
-        }
     }
 
-}
-
-input.function-switch:checked {
-    + label {
-        color: var(--foregroundcolor-lightest);
-        border-color: var(--foregroundcolor-lightest);
-    }
-}
-
-label[for=darkmode-switch] {
-    &::before {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 0;
-        bottom: 0;
-        border-bottom: 23px solid var(--foregroundcolor-lighter);
-        border-left: 23px solid transparent;
-
-        transition: border-color @transition-time ease-out;
-    }
-
-    &:hover {
-        border: solid 1px var(--backgroundcolor-lightest);
-
-        &::before {
-            border-bottom-color: var(--foregroundcolor-lightest);
-        }
+    &.secondary {
+        top: calc(@spacer-height + 18px);
     }
 }
 
@@ -94,23 +119,12 @@ label[for=settings-switch] {
         left: 5px;
         top: 3px
     }
-
-    &:hover {
-        border: solid 1px var(--backgroundcolor-lightest);
-
-        &::before {
-            border-bottom-color: var(--foregroundcolor-lightest);
-        }
-    }
 }
 
-
 label[for=image-fit-switch] {
-    right:140px;
-    top: calc(@spacer-height + 18px);
+    right: 140px;
     opacity: 0;
     visibility: hidden;
-    transition: all @transition-time ease-out;
 
     &::before {
         content: "";
@@ -140,27 +154,13 @@ label[for=image-fit-switch] {
     }
 }
 
-label.format-selector {
-    position: fixed;
-    top: calc(@spacer-height + 18px);
-    z-index: 301;
-    height: 25px;
-    width: 25px;
-    cursor: pointer;
-
+label.settings-label.format {
     opacity: 0;
     visibility: hidden;
-
-    transition: all @transition-time ease-out;
-    border: solid 1px var(--backgroundcolor-lighter);
-
-    &:hover {
-        border-color: var(--backgroundcolor-lightest);
-    }
 }
 
 label[for=format-selector-panorama] {
-    right:105px;
+    right: 105px;
     top: calc(@spacer-height + 23px);
     height: 15px;
 }
@@ -170,67 +170,14 @@ label[for=format-selector-square] {
 }
 
 label[for=format-selector-portrait] {
-    right:55px;
+    right: 55px;
     width: 15px;
 }
 
-#darkmode-switch:checked {
+input.settings-input:checked {
     + label {
-        &::before {
-            border-bottom-color: var(--backgroundcolor-lighter);
-        }
-    }
-
-    ~ label.function-switch {
-        border-color: var(--foregroundcolor-lightest);
-        color:var(--foregroundcolor-lightest);
-    }
-    ~ label.function-switch:hover {
-        border-color: var(--backgroundcolor-lightest);
-        color:var(--backgroundcolor-lightest);
-    }
-    ~ input.function-switch:checked + label.function-switch {
-        color: var(--backgroundcolor);
-        border-color: var(--backgroundcolor);
-    }
-
-    ~ label.format-selector {
         color: var(--foregroundcolor-lightest);
         border-color: var(--foregroundcolor-lightest);
-        &::before {
-            border-bottom-color: var(--backgroundcolor-lightest);
-        }
-
-        &:hover {
-            color: var(--backgroundcolor-lighter);
-            border: solid 1px var(--backgroundcolor-lighter);
-
-            &::before {
-                border-bottom-color: var(--backgroundcolor-lighter);
-            }
-        }
-    }
-
-    ~ label.format-selector:hover {
-        border-color: var(--backgroundcolor-lightest);
-        color:var(--backgroundcolor-lightest);
-    }
-    ~ input.format-selector:checked + label.format-selector {
-        color: var(--backgroundcolor);
-        border-color: var(--backgroundcolor);
-    }
-
-    ~ *{
-        --backgroundcolor:#f5f5f5;
-        --backgroundcolor-trans:hsla(0,0%,96.1%,0.8);
-        --backgroundcolor-light:#e3e3e3;
-        --backgroundcolor-light-trans:hsla(0,0%,89%,0.8);
-        --backgroundcolor-lighter:#d1d1d1;
-        --foregroundcolor:#141414;
-        --foregroundcolor-trans:rgba(20,20,20,0.8);
-        --foregroundcolor-light:#262626;
-        --foregroundcolor-light-trans:rgba(38,38,38,0.8);
-        --foregroundcolor-lighter:#383838;
     }
 }
 
@@ -245,7 +192,7 @@ label[for=format-selector-portrait] {
     visibility: hidden;
     transition: visibility @transition-time ease-out, opacity @transition-time ease-out;
 
-    line-height: 60px;
+    line-height: @spacer-height;
     font-size: 1.5em;
     box-shadow: @box-shadow-down;
     
@@ -260,23 +207,13 @@ label[for=format-selector-portrait] {
 }
 
 #settings-switch:checked {
-    + label {
-        color: var(--foregroundcolor-lightest);
-        border-color: var(--foregroundcolor-lightest);
-    }
-
     &:checked {
         ~ #settings-backdrop {
             opacity: 1;
             visibility: visible;
         }
 
-        ~ label.function-switch {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        ~ label.format-selector {
+        ~ label.settings-label {
             opacity: 1;
             visibility: visible;
         }
@@ -289,17 +226,10 @@ label[for=format-selector-portrait] {
     }
 }
 
-input.format-selector {
-    position:fixed;
-    clip:rect(0,0,0,0);
-    height:0;
-    width:0;
-
+input.settings-input {
     &:checked{
-        + label.format-selector{
+        + label.settings-label.secondary.format{
             cursor:default;
-
-            border-color: var(--foregroundcolor);
         }
     }
 }
@@ -407,7 +337,7 @@ div.body {
                     padding-left @transition-time ease-out;
 
                 &:after{
-                    content:"";
+                    content: "";
                     display: block;
                     position: absolute;
                     right: 0;
@@ -447,23 +377,23 @@ div.body {
         }
 
         .nav-trigger{
-            position:fixed;
-            clip:rect(0,0,0,0);
-            height:0;
-            width:0;
+            position: fixed;
+            clip: rect(0,0,0,0);
+            height: 0;
+            width: 0;
         }
 
         label[for=nav-trigger]{
-            position:fixed;
-            left:15px;
-            top:15px;
-            z-index:301;
-            height:31px;
-            width:35px;
-            padding-left:5px;
-            cursor:pointer;
-            filter:drop-shadow(0 0 1px var(--backgroundcolor));
-            transition:left @transition-time;
+            position: fixed;
+            left: 15px;
+            top: 15px;
+            z-index: calc(@nav-z-index + 1);
+            height: 31px;
+            width: 35px;
+            padding-left: 5px;
+            cursor: pointer;
+            filter: drop-shadow(0 0 1px var(--backgroundcolor));
+            transition: left @transition-time;
 
             * {
                 -webkit-transition: all @transition-time ease-out;
@@ -483,14 +413,14 @@ div.body {
                 background-color: var(--foregroundcolor);
 
                 &:first-child{
-                    top:6px;
+                    top: 6px;
                 }
 
                 &:nth-child(2){
-                    top:14px;
+                    top: 14px;
                 }
                 &:nth-child(3){
-                    top:22px;
+                    top: 22px;
                 }
             }
         }
@@ -507,7 +437,7 @@ div.body {
                     }
 
                     &:nth-child(2){
-                        opacity:0;
+                        opacity: 0;
                     }
 
                     &:nth-child(3) {
@@ -521,7 +451,7 @@ div.body {
 
             ~nav {
                 width: @nav-width;
-                pointer-events:all;
+                pointer-events: all;
                 box-shadow: @box-shadow-right;
             }
         }
@@ -540,9 +470,6 @@ div.body {
             position: relative;
             transition: padding-top @transition-time ease-out;
             box-shadow: @box-shadow-down;
-
-            &:hover {
-            }
 
             figure {
                 position: absolute;
@@ -590,30 +517,30 @@ div.body {
             grid-template-columns: repeat(1,1fr)
         }
         .span-2,.span-3{
-            grid-column-end:span 1;
-            grid-row-end:span 1
+            grid-column-end: span 1;
+            grid-row-end: span 1
         }
     }
 }
-@media screen and (min-width:600px){
+@media screen and (min-width: 600px){
     div.body {
         .grid{
             grid-template-columns:repeat(2,1fr)
         }
         .span-3{
-            grid-column-end:span 2;
-            grid-row-end:span 2
+            grid-column-end: span 2;
+            grid-row-end: span 2
         }
 }
 }
-@media screen and (min-width:900px){
+@media screen and (min-width: 900px){
     div.body {
         .grid{
             grid-template-columns:repeat(3,1fr)
         }
         .span-2{
-            grid-column-end:span 2;
-            grid-row-end:span 2
+            grid-column-end: span 2;
+            grid-row-end: span 2
         }
         .span-3{
             grid-column-end:span 3;
@@ -621,13 +548,13 @@ div.body {
         }
     }
 }
-@media screen and (min-width:1200px){
+@media screen and (min-width: 1200px){
     div.body .grid{
-        grid-template-columns:repeat(4,1fr)
+        grid-template-columns: repeat(4,1fr)
     }
 }
-@media screen and (min-width:1800px){
+@media screen and (min-width: 1800px){
     div.body .grid{
-        grid-template-columns:repeat(auto-fit,minmax(400px, 1fr))
+        grid-template-columns: repeat(auto-fit,minmax(400px, 1fr))
     }
 }
