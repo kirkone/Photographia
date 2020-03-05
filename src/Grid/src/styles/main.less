@@ -245,13 +245,18 @@ label[for=format-selector-portrait] {
     visibility: hidden;
     transition: visibility @transition-time ease-out, opacity @transition-time ease-out;
 
-    backdrop-filter: blur(10px) saturate(125%);
     line-height: 60px;
     font-size: 1.5em;
     box-shadow: @box-shadow-down;
-
+    
     background-color: var(--backgroundcolor-light-trans);
+    backdrop-filter: blur(10px) saturate(125%);
     color: var(--foregroundcolor);
+
+    @supports not (backdrop-filter: blur(10px)) {
+        background-color: var(--backgroundcolor-light);
+        backdrop-filter: none;
+    }
 }
 
 #settings-switch:checked {
