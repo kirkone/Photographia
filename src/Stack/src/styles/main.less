@@ -1,0 +1,117 @@
+@import "variab.less";
+@import "gg.less";
+@import "font.less";
+
+*,
+:after,
+:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    scroll-behavior: smooth;
+    font-family: @font;
+    font-weight: 100;
+    font-size: 1.1em;
+
+    color: var(--foregroundcolor);
+    background-color: var(--backgroundcolor);
+
+    display: grid;
+}
+
+nav {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    bottom: 20px;
+
+    box-shadow: 5px 5px 6px #000, -5px -5px 6px #22252b;
+    background-color: var(--backgroundcolor);
+
+    ul {
+        list-style-type: none;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+
+        li {
+            margin: 10px;
+            display: block;
+            width: 35px;
+            height: 35px;
+            box-shadow: 3px 3px 4px #000, -3px -3px 4px #22252b;
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+                text-align: center;
+                color: var(--foregroundcolor);
+            }
+
+            &:hover {
+                box-shadow: 1px 1px 1px #000, -1px -1px 1px #22252b;
+            }
+
+            &.active {
+                box-shadow: inset 3px 3px 4px #000, inset -3px -3px 4px #22252b;
+
+                a {
+                    color: rgb(0, 255, 0);
+                    filter: drop-shadow(0px 0px 5px rgba(0, 255, 0, 0.6));
+                }
+            }
+        }
+    }
+}
+
+.images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 100%;
+
+    margin: 10px 10px 10px 60px;
+
+    > div {
+        height: auto;
+        width: auto;
+        max-height: 100vh;
+
+        margin: 10px;
+
+        box-shadow: 5px 5px 6px #000, -5px -5px 6px #22252b;
+        border-radius: 10px;
+
+        overflow: hidden;
+
+        img {
+            display: block;
+            max-height: ~"min(400px, 100vh)";
+            max-width: 100%;
+        }
+    }
+}
