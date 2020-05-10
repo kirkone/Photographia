@@ -39,6 +39,8 @@ nav {
     box-shadow: 5px 5px 6px #000, -5px -5px 6px #22252b;
     background-color: var(--backgroundcolor);
 
+    border-radius: 0 10px 10px 0;
+
     ul {
         list-style-type: none;
 
@@ -97,6 +99,7 @@ nav {
     margin: 10px 10px 10px 60px;
 
     > div {
+        position: relative;
         height: auto;
         width: auto;
         max-height: 100vh;
@@ -106,12 +109,69 @@ nav {
         box-shadow: 5px 5px 6px #000, -5px -5px 6px #22252b;
         border-radius: 10px;
 
-        overflow: hidden;
-
         img {
             display: block;
             max-height: ~"min(400px, 100vh)";
             max-width: 100%;
+            border-radius: 10px;
         }
+
+        .title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            color: var(--foregroundcolor);
+            text-align: center;
+            font-size: 1.5em;
+
+            opacity: 0;
+            transition: all 350ms ease-in-out;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+            background-color: var(--backgroundcolor-trans);
+            border: solid 1px var(--foregroundcolor);
+
+            p {
+                margin: 10px;
+            }
+        }
+
+        &:hover,
+        &:focus {
+            outline: none;
+            .title {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    nav {
+        top: unset;
+        left: 10px;
+        right: 10px;
+        bottom: 0;
+
+
+    border-radius: 10px 10px 0 0;
+
+        z-index: 100;
+
+        ul {
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+        }
+    }
+
+    .images {
+        margin: 10px 10px 60px 10px;
     }
 }
