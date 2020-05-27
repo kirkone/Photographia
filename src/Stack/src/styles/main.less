@@ -37,7 +37,7 @@ header {
         z-index: calc(@nav-z-index - 20);
         width: 100%;
         background-color: var(--backgroundcolor-light-trans);
-        backdrop-filter: blur(10px) saturate(125%);
+        backdrop-filter: @backdrop-filter;
         line-height: @spacer-height;
         padding-left: 65px;
         padding-right: 2vw;
@@ -46,7 +46,7 @@ header {
         box-shadow: @box-shadow-down;
         text-align: right;
 
-        @supports not (backdrop-filter: blur(10px)) {
+        @supports not (backdrop-filter: blur(3px)) {
             background-color: var(--backgroundcolor-light);
             backdrop-filter: none;
         }
@@ -72,14 +72,14 @@ header {
         font-size: 1em;
         background: 0 0;
         background-color: var(--backgroundcolor-light-trans);
-        backdrop-filter: blur(10px) saturate(125%);
+        backdrop-filter: @backdrop-filter;
         overflow: hidden;
         z-index: @nav-z-index;
         pointer-events: none;
         box-shadow: none;
         transform: translateX(-@nav-width);
 
-        @supports not (backdrop-filter: blur(10px)) {
+        @supports not (backdrop-filter: blur(3px)) {
             background-color: var(--backgroundcolor-light);
             backdrop-filter: none;
         }
@@ -138,11 +138,6 @@ header {
             &:hover {
                 color: var(--foregroundcolor-light);
                 padding-left: 1.3rem;
-
-                @supports not (backdrop-filter: blur(10px)) {
-                    background-color: var(--backgroundcolor-lighter);
-                    backdrop-filter: none;
-                }
             }
 
             &.active {
@@ -292,10 +287,15 @@ header {
             align-items: center;
             justify-content: center;
 
-            background-color: var(--backgroundcolor-trans);
+            background-color: var(--backgroundcolor-light-trans);
             border: solid 1px var(--foregroundcolor);
 
-            backdrop-filter: blur(3px) saturate(50%);
+            backdrop-filter: @backdrop-filter;
+
+            @supports not (backdrop-filter: blur(3px)) {
+                background-color: var(--backgroundcolor-light);
+                backdrop-filter: none;
+            }
 
             p {
                 margin: 10px;
@@ -340,6 +340,7 @@ header {
             left:0;
             bottom:0;
             background: linear-gradient(180deg, rgba(255,255,255,0) 90%, var(--backgroundcolor-light) 95%);
+            pointer-events: none;
         }
 
         &.big{
