@@ -15,11 +15,11 @@
     "url": "https://github.com/kirkone/KK.AspNetCore.Images.git"
   },
   "devDependencies": {
-    "autoprefixer": "^9.7.6",
-    "less": "^3.11.1",
+    "autoprefixer": "^9.8.0",
+    "less": "^3.11.2",
     "parcel-bundler": "^1.12.4",
     "postcss-modules": "^2.0.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.3"
   },
   "dependencies": {}
 }
