@@ -319,13 +319,13 @@ header {
 
         overflow: hidden;
         max-width: 40vw;
-        height: ~"min(calc(100vw / 3 - 2.5vw), calc(100vh - @{spacer-height} - 2vw))";
+        height: ~"min(calc(100vw / 3 - 2.5vw), calc(100vh - @{spacer-height} - 2vw), 800px)";
         padding: 3vw;
 
         border: solid 1px var(--backgroundcolor);
         background-color: var(--backgroundcolor-light);
 
-        font-size: 1.2vw;
+        font-size: ~"clamp(0.5rem, 1.2vw, 1.5rem)";
 
         &:focus {
             outline: none;

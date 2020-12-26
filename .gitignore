@@ -288,4 +288,4 @@ __pycache__/
 *.xsd.cs
 
 dist/
-.cache/
+.parcel-cache/
