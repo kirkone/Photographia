@@ -1,0 +1,216 @@
+@use '../abstracts/variables';
+
+.images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: variables.$spacer-height;
+    padding: variables.$grid-gap;
+
+    overflow-y: scroll;
+    scroll-snap-type: y proximity;
+
+    > div {
+        position: relative;
+        margin: variables.$grid-gap;
+        box-shadow: 2px 2px 6px #000, -2px -2px 6px #111;
+        cursor: pointer;
+
+        overflow: hidden;
+        scroll-snap-align: center;
+
+        img {
+            display: block;
+            max-height: min(calc( (100vw - #{variables.$spacer-height + ( variables.$grid-gap * 6 ) + 17px} ) / 3), calc(100vh - #{ variables.$grid-gap * 4  - 1px}));
+            width: auto;
+        }
+
+        .title {
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            cursor: auto;
+
+            color: var(--foregroundcolor);
+            text-align: center;
+            font-size: 1.5em;
+
+            opacity: 0;
+            transition: all 350ms ease-in-out;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: var(--backgroundcolor-light-trans);
+            border: solid 1px var(--foregroundcolor);
+
+            backdrop-filter: variables.$backdrop-filter;
+
+            @supports not (backdrop-filter: blur(3px)) {
+                background-color: var(--backgroundcolor-light);
+                backdrop-filter: none;
+            }
+
+            p {
+                margin: 10px;
+            }
+        }
+
+        &:focus {
+            outline: none;
+            .title {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    > article {
+        position: relative;
+        margin: variables.$grid-gap;
+        box-shadow: 2px 2px 6px #000, -2px -2px 6px #111;
+        cursor: pointer;
+
+        overflow: hidden;
+        scroll-snap-align: center;
+
+        max-width: 40vw;
+        height: min(calc( (100vw - #{variables.$spacer-height + ( variables.$grid-gap * 6) + 17px} ) / 3), calc(100vh - #{variables.$grid-gap * 4 - 1px}));
+        padding: 3vw;
+
+        border: solid 1px var(--backgroundcolor-light);
+        background-color: var(--backgroundcolor-light);
+
+        font-size: clamp(0.5rem, 1.2vw, 1.4rem);
+
+        transition: border 350ms ease-in-out;
+
+        &:focus {
+            outline: none;
+            border: solid 1px var(--foregroundcolor);
+        }
+
+        :before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0) 90%,
+                var(--backgroundcolor-light) 95%
+            );
+            pointer-events: none;
+        }
+
+        &.big {
+            max-width: calc(100vw - #{variables.$spacer-height + variables.$grid-gap * 2});
+            height: auto;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 1em;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 0.5em;
+        }
+    }
+
+    > hr {
+        width: calc(100% - 4vw);
+
+        line-height: 1em;
+        font-size: 1.5em;
+        position: relative;
+        border: 0;
+        color: var(--foregroundcolor);
+        text-align: center;
+        height: 1.5em;
+        margin: variables.$grid-gap 0;
+
+        filter: drop-shadow(0 0 1px var(--backgroundcolor));
+
+        &:before {
+            content: "";
+            background: var(--foregroundcolor-lightest);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+        }
+
+        &:after {
+            content: attr(aria-label);
+            position: relative;
+            display: inline-block;
+            padding: 0 2vw;
+            line-height: 1.5em;
+            background-color: var(--backgroundcolor);
+        }
+    }
+
+    // [id]:target::before {
+    //     content: "";
+    //     display: block;
+    //     height: variables.$spacer-height;
+    //     margin-top: -variables.$spacer-height;
+    //     visibility: hidden;
+    // }
+}
+
+@media (max-width: #{1200px + variables.$spacer-height + (variables.$grid-gap * 2)}) {
+    .images {
+        > div {
+            img {
+                height: auto;
+                max-height: min(calc( 100vw - #{variables.$spacer-height - 17px} ), calc(100vh - #{variables.$grid-gap * 4 - 1px}));
+                max-width: calc(100vw - 4vw);
+            }
+        }
+
+        > article {
+            overflow: visible;
+            max-width: calc(100vw - #{variables.$spacer-height + variables.$grid-gap * 2});
+            height: auto;
+
+            font-size: unset;
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .images {
+        > div {
+            img {
+                height: auto;
+                max-height: calc(100vh - #{variables.$grid-gap * 2});
+                max-width: calc(100vw - #{variables.$spacer-height + variables.$grid-gap * 2});
+            }
+        }
+
+        > article {
+            overflow: visible;
+            max-width: calc(100vw - #{variables.$spacer-height + variables.$grid-gap * 2});
+            height: auto;
+
+            font-size: unset;
+        }
+    }
+}
+
