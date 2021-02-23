@@ -1,0 +1,174 @@
+@use '../abstracts/variables';
+@use '../base/typography';
+
+nav {
+    transition: transform variables.$transition-time ease-out;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: variables.$nav-width;
+    font-size: 1em;
+    background: 0 0;
+    background-color: var(--backgroundcolor-light-trans);
+    backdrop-filter: variables.$backdrop-filter;
+    overflow: hidden;
+    z-index: variables.$nav-z-index;
+    pointer-events: none;
+    box-shadow: none;
+    transform: translateX(- variables.$nav-width);
+
+    @supports not (backdrop-filter: blur(3px)) {
+        background-color: var(--backgroundcolor-light);
+        backdrop-filter: none;
+    }
+
+    #searchbox {
+        label {
+            display: none;
+        }
+
+        input {
+            color: var(--backgroundcolor-light);
+            background-color: var(--foregroundcolor-light);
+            border: none;
+            font-size: 1.2em;
+            font-family: typography.$font;
+            line-height: variables.$spacer-height;
+            display: inline-block;
+            width: 100%;
+            padding: 0 1rem;
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+    }
+
+    span.devider {
+        width: 100%;
+        height: 30px;
+        display: inline-block;
+    }
+
+    a {
+        position: relative;
+        padding: 0 1rem;
+        text-decoration: none;
+        color: var(--foregroundcolor);
+        font-size: 1.2em;
+        line-height: variables.$spacer-height;
+        display: inline-block;
+        width: 100%;
+        transition: background-color variables.$transition-time ease-out,
+            padding-left variables.$transition-time ease-out;
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--foregroundcolor-light);
+            transition: width variables.$transition-time ease-out;
+        }
+
+        &.active,
+        &:hover {
+            color: var(--foregroundcolor-light);
+            padding-left: 1.3rem;
+        }
+
+        &.active {
+            pointer-events: none;
+            cursor: default;
+        }
+
+        &.active:after,
+        &:hover:after {
+            width: calc(100% - 1rem);
+            transition: width variables.$transition-time ease-out;
+        }
+
+        &.devider {
+            pointer-events: none;
+            cursor: default;
+            line-height: 0;
+        }
+    }
+}
+
+.nav-trigger {
+    position: fixed;
+    clip: rect(0, 0, 0, 0);
+    height: 0;
+    width: 0;
+}
+
+label[for="nav-trigger"] {
+    position: fixed;
+    left: 15px;
+    top: 15px;
+    z-index: calc(#{variables.$nav-z-index} + 20);
+    height: 31px;
+    width: 35px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 1px var(--backgroundcolor));
+
+    * {
+        -webkit-transition: all variables.$transition-time ease-out;
+        transition: all variables.$transition-time ease-out;
+        box-sizing: border-box;
+    }
+
+    &:hover i {
+        background-color: var(--foregroundcolor-light);
+    }
+
+    i {
+        display: block;
+        position: absolute;
+        height: 1px;
+        width: 25px;
+        background-color: var(--foregroundcolor);
+
+        &:first-child {
+            top: 6px;
+        }
+
+        &:nth-child(2) {
+            top: 14px;
+        }
+        &:nth-child(3) {
+            top: 22px;
+        }
+    }
+}
+
+.nav-trigger:checked {
+    + label {
+        > i {
+            &:first-child {
+                -webkit-transform: translateY(-1px) rotate(-135deg);
+                transform: translateY(-1px) rotate(-135deg);
+                margin-top: 10px;
+            }
+
+            &:nth-child(2) {
+                opacity: 0;
+            }
+
+            &:nth-child(3) {
+                -webkit-transform: translateY(2px) rotate(135deg);
+                transform: translateY(2px) rotate(135deg);
+                margin-top: -12px;
+            }
+        }
+    }
+
+    ~ nav {
+        transform: translateX(variables.$spacer-height);
+        pointer-events: all;
+        box-shadow: variables.$box-shadow-right;
+    }
+}

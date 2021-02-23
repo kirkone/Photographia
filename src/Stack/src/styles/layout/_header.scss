@@ -1,0 +1,27 @@
+@use "../abstracts/variables";
+
+header {
+    > div:first-child {
+        position: fixed;
+        top: 0;
+        z-index: calc(#{variables.$nav-z-index} + 10);
+        width: 100vh;
+        background-color: var(--backgroundcolor-light-trans);
+        backdrop-filter: variables.$backdrop-filter;
+        line-height: variables.$spacer-height;
+        padding-left: variables.$spacer-height;
+        color: var(--foregroundcolor);
+        font-size: 1.5em;
+        box-shadow: variables.$box-shadow-down;
+
+        transform: rotateZ(90deg) translateX(-60px);
+        transform-origin: bottom left;
+
+        @supports not (backdrop-filter: blur(3px)) {
+            background-color: var(--backgroundcolor-light);
+            backdrop-filter: none;
+        }
+    }
+
+    @import "./navigation";
+}
