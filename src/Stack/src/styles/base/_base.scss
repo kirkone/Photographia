@@ -2,10 +2,7 @@
 
 body,
 html {
-    height: 100%;
-    width: 100%;
     scroll-behavior: smooth;
-    overflow: hidden;
 }
 
 body {
@@ -15,8 +12,6 @@ body {
 
     color: var(--foregroundcolor);
     background-color: var(--backgroundcolor);
-
-    display: grid;
 
     --scrollbar-width: calc(100vw - 100%);
 }
