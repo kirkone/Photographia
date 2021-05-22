@@ -1,0 +1,75 @@
+@use '../abstracts/variables';
+
+#image {
+    position: relative;
+    margin-left: variables.$spacer-height;
+
+    .image {
+        position: fixed;
+        top: 0;
+        z-index: 100;
+
+        display: block;
+        height: 100vh;
+        width: calc(100% - #{variables.$spacer-height});
+
+        img {
+            z-index: 100;
+
+            display: block;
+            height: auto;
+            max-height: 100vh;
+            width: auto;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+    }
+
+    .original {
+        position: sticky;
+        top: -1px;
+        z-index: 110;
+
+        // margin-top: 100vh;
+        height: 100vh;
+        width: 100%;
+
+        clip-path: inset(0 0 0 0);
+        // border-top: 1px solid red;
+
+        &::before{
+            content: "Original";
+            position: absolute;
+            top: 0px;
+            display: block;
+            // background-color: var(--backgroundcolor-trans);
+            width: 300px;
+            // z-index: 300;
+        }
+
+        img {   
+            filter: saturate(50%) contrast(80%) brightness(90%);
+
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: variables.$spacer-height;
+            z-index: 100;
+
+            display: block;
+            height: auto;
+            max-height: 100vh;
+            width: auto;
+            max-width: calc(100% - #{variables.$spacer-height});
+            margin: 0 auto;
+        }
+    }
+        
+    .description{
+        height: 100vh;
+        z-index: 120;
+        color: red;
+    }
+
+}
+

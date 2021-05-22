@@ -1,0 +1,26 @@
+$backgroundcolor: rgb(20, 20, 30);
+$backgroundcolor-trans: rgba(20, 20, 30, 0.8);
+$backgroundcolor-light: rgb(38, 38, 46);
+$backgroundcolor-lighter: rgb(53, 53, 59);
+
+$foregroundcolor: rgb(255, 255, 255);
+$foregroundcolor-light: rgb(235, 235, 255);
+
+$spacer-height: 60px;
+
+$nav-width: 200px;
+
+$duration-default: 0.3s;
+
+$box-shadow: 0 0 20px $backgroundcolor;
+
+:root {
+    --backgroundcolor: #{$backgroundcolor};
+    --backgroundcolor-trans: #{$backgroundcolor-trans};
+    --backgroundcolor-light: #{$backgroundcolor-light};
+    --backgroundcolor-lighter: #{$backgroundcolor-lighter};
+
+    --foregroundcolor: #{$foregroundcolor};
+    --foregroundcolor-light: #{$foregroundcolor-light};
+}
+
