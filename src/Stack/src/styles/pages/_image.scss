@@ -27,15 +27,15 @@
 
     .original {
         position: sticky;
-        top: 0;
+        top: -1px;
         z-index: 110;
-        overflow: hidden;
 
-        margin-top: 100vh;
+        // margin-top: 100vh;
         height: 100vh;
         width: 100%;
 
         clip-path: inset(0 0 0 0);
+        // border-top: 1px solid red;
 
         &::before{
             content: "Original";
