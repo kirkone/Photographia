@@ -1,0 +1,18 @@
+@charset "UTF-8";
+// Structuring your Sass Projects
+// https://itnext.io/structuring-your-sass-projects-c8d41fa55ed4
+
+@use './abstracts/variables';
+
+@use "./vendors/gg";
+
+@use "./base/reset";
+@use "./base/typography";
+@use "./base/base";
+
+@use "./layout/navigation";
+
+@use "./components/button";
+
+@use "./pages/images";
+@use "./pages/image";

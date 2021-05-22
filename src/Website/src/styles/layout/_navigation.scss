@@ -1,0 +1,251 @@
+@use '../abstracts/variables';
+@use '../base/typography';
+
+#nav {
+    opacity: 0;
+    transition: opacity variables.$duration-default ease-out;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: variables.$nav-width;
+    // line-height: @spacer-height;
+    font-size: 0.9em;
+    background: 0 0;
+    background-color: var(--backgroundcolor-light);
+
+    flex-direction: row;
+    flex-flow: wrap;
+
+    #searchbox {
+        label {
+            display: none;
+        }
+
+        input {
+            color: var(--backgroundcolor-light);
+            background-color: var(--foregroundcolor-light);
+            border: none;
+            font-size: 1.2em;
+            line-height: variables.$spacer-height;
+            display: inline-block;
+            width: 100%;
+            padding: 0 1rem;
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+    }
+
+    span.devider {
+        width: 100%;
+        height: calc(variables.$spacer-height / 2);
+        display: inline-block;
+    }
+
+    a {
+        padding: 0 1rem;
+        text-decoration: none;
+        color: var(--foregroundcolor);
+        font-size: 1.2em;
+        line-height: variables.$spacer-height;
+        display: inline-block;
+        width: 100%;
+        transition: background-color variables.$duration-default ease-out,
+            padding-left variables.$duration-default ease-out;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 2px;
+            margin: 0 -1.3rem;
+            background-color: var(--foregroundcolor-light);
+            transition: width variables.$duration-default;
+        }
+
+        &:hover,
+        &.active {
+            &.active {
+                pointer-events: none;
+                cursor: default;
+                font-weight: bold;
+            }
+            background-color: var(--backgroundcolor-lighter);
+            color: var(--foregroundcolor-light);
+            padding-left: 1.3rem;
+
+            &::after {
+                width: 100%;
+                transition: width variables.$duration-default;
+            }
+        }
+
+        &.devider {
+            pointer-events: none;
+            cursor: default;
+
+            line-height: 0;
+        }
+    }
+}
+
+.nav-trigger {
+    position: fixed;
+    clip: rect(0, 0, 0, 0);
+}
+
+label[for="nav-trigger"] {
+    position: fixed;
+    left: 15px;
+    top: 15px;
+    z-index: 300;
+    height: 31px;
+    width: 35px;
+    padding-left: 5px;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 1px var(--backgroundcolor));
+    transition: left variables.$duration-default;
+
+    * {
+        -webkit-transition: all variables.$duration-default;
+        transition: all variables.$duration-default;
+        box-sizing: border-box;
+    }
+
+    &:hover i {
+        background-color: var(--foregroundcolor-light);
+    }
+
+    i {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 25px;
+        background-color: var(--foregroundcolor);
+
+        &:nth-child(1) {
+            top: 6px;
+        }
+
+        &:nth-child(2) {
+            top: 14px;
+        }
+
+        &:nth-child(3) {
+            top: 22px;
+        }
+    }
+}
+
+.nav-trigger:checked {
+    + label {
+        left: variables.$nav-width + 16px;
+        > i:nth-child(1) {
+            -webkit-transform: translateY(-1px) rotate(-135deg);
+            transform: translateY(-1px) rotate(-135deg);
+            margin-top: 10px;
+        }
+
+        > i:nth-child(2) {
+            opacity: 0;
+        }
+
+        > i:nth-child(3) {
+            -webkit-transform: translateY(2px) rotate(135deg);
+            transform: translateY(2px) rotate(135deg);
+            margin-top: -12px;
+        }
+    }
+}
+
+.nav-trigger:checked ~ #nav {
+    opacity: 1;
+}
+
+.nav-trigger:checked ~ #content {
+    margin-left: variables.$nav-width;
+    box-shadow: variables.$box-shadow;
+    border-left: 1px solid var(--backgroundcolor-lighter);
+}
+
+body > a {
+    position: fixed;
+    left: 15px;
+    top: 15px;
+    z-index: 200;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 1px var(--backgroundcolor));
+    text-decoration: none;
+
+    i {
+        display: block;
+        position: absolute;
+        height: 3px;
+        background-color: var(--foregroundcolor);
+        -webkit-transition: all variables.$duration-default;
+        transition: all variables.$duration-default;
+
+        &:nth-child(1) {
+            width: 18px;
+            top: 8px;
+            -webkit-transform: translateY(-1px) rotate(135deg);
+            transform: translateY(-1px) rotate(135deg);
+        }
+
+        &:nth-child(2) {
+            width: 25px;
+            top: 13px;
+            -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+        }
+
+        &:nth-child(3) {
+            width: 18px;
+            top: 20px;
+            -webkit-transform: translateY(-1px) rotate(-135deg);
+            transform: translateY(-1px) rotate(-135deg);
+        }
+    }
+
+    &:hover i {
+        background-color: var(--foregroundcolor);
+
+        &:nth-child(1) {
+            width: 25px;
+            top: 15px;
+            -webkit-transform: translateY(-1px) rotate(-135deg);
+            transform: translateY(-1px) rotate(-135deg);
+        }
+
+        &:nth-child(2) {
+            opacity: 0;
+            width: 0;
+        }
+
+        &:nth-child(3) {
+            width: 25px;
+            top: 11px;
+            -webkit-transform: translateY(-1px) rotate(135deg);
+            transform: translateY(-1px) rotate(135deg);
+        }
+    }
+
+    span {
+        display: block;
+        -webkit-transition: opacity variables.$duration-default ease-out;
+        transition: opacity variables.$duration-default ease-out;
+        color: var(--foregroundcolor);
+        font-size: 1.4em;
+        padding-left: 40px;
+        height: 30px;
+        line-height: 28px;
+        overflow: hidden;
+        opacity: 0;
+    }
+
+    &:hover span {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,238 @@
+@use '../abstracts/variables';
+
+#content {
+    position: relative;
+    z-index: 200;
+    display: flex;
+    flex: none;
+    flex-flow: column nowrap;
+    background-color: rgb(20, 20, 30);
+    margin-left: 0;
+    margin-top: -1px;
+    width: auto;
+
+    transition: margin-left variables.$duration-default;
+
+    article {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: none;
+
+        &:not(:last-child) {
+            margin-bottom: 2px;
+        }
+
+        .info {
+            position: absolute;
+            left: 0;
+            height: 100px;
+            width: 200px;
+            background-color: var(--backgroundcolor-trans);
+            backdrop-filter: blur(10px);
+        }
+
+        > div {
+            position: relative;
+            width: 150vh;
+            max-width: 100%;
+            overflow: hidden;
+            margin-top: -2px;
+            border-top: 2px solid var(--backgroundcolor);
+
+            &::before {
+                content: "";
+                display: block;
+                padding-top: calc( 100% / 3 * 2 );
+                margin-top: -2px;
+                margin-bottom: -2px;
+                background-color: var(--backgroundcolor);
+            }
+
+            > div {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+
+                img {
+                    max-width: 100%;
+                    max-height: 100vh;
+                    vertical-align: bottom;
+                }
+
+                &.devider {
+                    background-color: var(--backgroundcolor-light);
+
+                    > h3 {
+                        padding: 0 60px;
+                        font-size: 1em;
+                        font-weight: normal;
+                        line-height: variables.$spacer-height;
+                        background-color: var(--backgroundcolor-lighter);
+                        border-bottom: 2px solid var(--foregroundcolor-light);
+                    }
+
+                    .preview {
+                        display: flex;
+                        flex-wrap: wrap;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        align-items: stretch;
+                        align-content: flex-start;
+
+                        > div {
+                            flex: 0 0 auto;
+                            width: 20%;
+                            position: relative;
+
+                            a {
+                                &::before {
+                                    content: "";
+                                    display: block;
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                    background-color: var(--backgroundcolor);
+                                    opacity: 0;
+                                    transition: opacity variables.$duration-default
+                                        ease-out;
+                                }
+
+                                &::after {
+                                    position: absolute;
+                                    bottom: 35px;
+                                    left: 15px;
+                                    content: "";
+                                    display: block;
+                                    width: 25px;
+                                    height: 25px;
+                                    border-left: solid 3px var(--foregroundcolor-light);
+                                    border-bottom: solid 3px var(--foregroundcolor-light);
+
+                                    filter: drop-shadow(
+                                        0px 0px 1px var(--backgroundcolor)
+                                    );
+                                    transform: rotate(-45deg);
+                                    transition: opacity variables.$duration-default
+                                        ease-out;
+                                    transition: bottom variables.$duration-default
+                                        ease-out;
+
+                                    opacity: 0;
+                                }
+                                &:hover {
+                                    &::before {
+                                        opacity: 0.5;
+                                    }
+
+                                    &::after {
+                                        bottom: 15px;
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+
+                            img {
+                                outline: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #image {
+        position: sticky;
+        top: 0;
+    }
+
+    #description {
+        position: relative;
+
+        > div {
+            padding: 2rem;
+            outline: 1px solid var(--backgroundcolor);
+            background-color: var(--backgroundcolor-trans);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            width: 500px;
+
+            h1 {
+                font-size: 1.6em;
+                margin-bottom: 0.8em;
+
+                &::after {
+                    content: "";
+                    display: block;
+                    height: 2px;
+                    margin: 0 -1rem;
+                    background-color: var(--foregroundcolor-light);
+                }
+            }
+
+            h2 {
+                font-size: 1.4em;
+                margin-bottom: 0.7em;
+            }
+
+            p {
+                font-size: 1.2em;
+                margin-bottom: 0.6em;
+                color: var(--foregroundcolor-light);
+            }
+
+            table {
+                td {
+                    &:first-of-type {
+                        color: var(--foregroundcolor-light);
+                        text-align: right;
+                        padding: 0 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 864px) {
+    #nav {
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--backgroundcolor-light);
+        padding-top: 60px;
+    }
+
+    .nav-trigger:checked {
+        ~ #nav {
+            z-index: 250;
+        }
+
+        ~ #content {
+            margin-left: 0;
+            border-left: none;
+        }
+
+        + label {
+            left: 15px;
+        }
+    }
+    #content {
+        article {
+            height: auto;
+            align-items: flex-start;
+
+            &:last-child {
+                height: 100vh;
+            }
+        }
+    }
+}
