@@ -31,14 +31,13 @@
             display: inline-block;
             width: 100%;
             padding: 0 1rem;
-            -webkit-appearance: none;
             border-radius: 0;
         }
     }
 
     span.devider {
         width: 100%;
-        height: calc(variables.$spacer-height / 2);
+        height: calc(#{variables.$spacer-height} / 2);
         display: inline-block;
     }
 
@@ -107,7 +106,6 @@ label[for="nav-trigger"] {
     transition: left variables.$duration-default;
 
     * {
-        -webkit-transition: all variables.$duration-default;
         transition: all variables.$duration-default;
         box-sizing: border-box;
     }
@@ -141,7 +139,6 @@ label[for="nav-trigger"] {
     + label {
         left: variables.$nav-width + 16px;
         > i:nth-child(1) {
-            -webkit-transform: translateY(-1px) rotate(-135deg);
             transform: translateY(-1px) rotate(-135deg);
             margin-top: 10px;
         }
@@ -151,7 +148,6 @@ label[for="nav-trigger"] {
         }
 
         > i:nth-child(3) {
-            -webkit-transform: translateY(2px) rotate(135deg);
             transform: translateY(2px) rotate(135deg);
             margin-top: -12px;
         }
@@ -163,9 +159,10 @@ label[for="nav-trigger"] {
 }
 
 .nav-trigger:checked ~ #content {
-    margin-left: variables.$nav-width;
+    transform: translateX(variables.$nav-width);
+    // margin-left: variables.$nav-width;
     box-shadow: variables.$box-shadow;
-    border-left: 1px solid var(--backgroundcolor-lighter);
+    // border-left: 1px solid var(--backgroundcolor-lighter);
 }
 
 body > a {
@@ -184,27 +181,23 @@ body > a {
         position: absolute;
         height: 3px;
         background-color: var(--foregroundcolor);
-        -webkit-transition: all variables.$duration-default;
         transition: all variables.$duration-default;
 
         &:nth-child(1) {
             width: 18px;
             top: 8px;
-            -webkit-transform: translateY(-1px) rotate(135deg);
             transform: translateY(-1px) rotate(135deg);
         }
 
         &:nth-child(2) {
             width: 25px;
             top: 13px;
-            -webkit-transform: translateX(5px);
             transform: translateX(5px);
         }
 
         &:nth-child(3) {
             width: 18px;
             top: 20px;
-            -webkit-transform: translateY(-1px) rotate(-135deg);
             transform: translateY(-1px) rotate(-135deg);
         }
     }
@@ -215,7 +208,6 @@ body > a {
         &:nth-child(1) {
             width: 25px;
             top: 15px;
-            -webkit-transform: translateY(-1px) rotate(-135deg);
             transform: translateY(-1px) rotate(-135deg);
         }
 
@@ -227,14 +219,12 @@ body > a {
         &:nth-child(3) {
             width: 25px;
             top: 11px;
-            -webkit-transform: translateY(-1px) rotate(135deg);
             transform: translateY(-1px) rotate(135deg);
         }
     }
 
     span {
         display: block;
-        -webkit-transition: opacity variables.$duration-default ease-out;
         transition: opacity variables.$duration-default ease-out;
         color: var(--foregroundcolor);
         font-size: 1.4em;
