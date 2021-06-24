@@ -160,6 +160,8 @@ label[for="nav-trigger"] {
 
 .nav-trigger:checked ~ #content {
     transform: translateX(variables.$nav-width);
+    filter: brightness(22%);
+    pointer-events: none;
     // margin-left: variables.$nav-width;
     box-shadow: variables.$box-shadow;
     // border-left: 1px solid var(--backgroundcolor-lighter);

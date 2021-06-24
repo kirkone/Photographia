@@ -21,7 +21,6 @@
         flex: none;
 
         background-color: var(--backgroundcolor);
-        border-top: variables.$divider-height solid var(--backgroundcolor);
         
         align-items: flex-start;
 
@@ -43,6 +42,9 @@
             width: 150vh;
             max-width: 100%;
 
+            border-top: variables.$divider-height solid var(--backgroundcolor);
+
+
             img {
                 max-width: 100%;
                 max-height: 100vh;
@@ -55,11 +57,15 @@
 
                 > h3 {
                     padding: 0 60px;
-                    font-size: 1em;
+                    font-size: 1.1em;
                     font-weight: normal;
                     line-height: variables.$spacer-height;
                     background-color: var(--backgroundcolor-lighter);
-                    border-bottom: 2px solid var(--foregroundcolor-light);
+                    filter: drop-shadow(0px 0px 1px var(--backgroundcolor));
+
+                    + *{
+                       border-top: variables.$divider-height solid var(--backgroundcolor-light);
+                    }
                 }
 
                 .preview {
