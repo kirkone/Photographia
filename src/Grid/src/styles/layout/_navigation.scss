@@ -1,0 +1,228 @@
+@use '../abstracts/variables';
+@use '../base/typography';
+
+input.settings-input {
+    position: fixed;
+    clip: rect(0,0,0,0);
+    height: 0;
+    width: 0;
+}
+
+label[for=darkmode-switch] {
+    right: 18px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        bottom: 0;
+        border-bottom: 23px solid var(--foregroundcolor-lighter);
+        border-left: 23px solid transparent;
+    }
+
+    &:hover {
+        &::before {
+            border-bottom-color: var(--foregroundcolor-lightest);
+        }
+    }
+}
+
+#darkmode-switch:checked {
+    + label {
+        &:hover {
+            &::before {
+                border-bottom-color: var(--backgroundcolor-lightest);
+            }
+        }
+    }
+
+    ~ label.settings-label {
+        border-color: var(--foregroundcolor-lightest);
+        color:var(--foregroundcolor-lightest);
+    }
+    ~ label.settings-label:hover {
+        border-color: var(--foregroundcolor-lightest);
+        color:var(--foregroundcolor-lightest);
+    }
+    ~ input.settings-input:checked + label.settings-label {
+        color: var(--foregroundcolor-lighter);
+        border-color: var(--foregroundcolor-lighter);
+    }
+
+    ~ *{
+        --backgroundcolor:#f5f5f5;
+        --backgroundcolor-trans:hsla(0,0%,96.1%,0.8);
+        --backgroundcolor-light:#e3e3e3;
+        --backgroundcolor-light-trans:hsla(0,0%,89%,0.8);
+        --backgroundcolor-lighter:#d1d1d1;
+        --foregroundcolor:#141414;
+        --foregroundcolor-trans:rgba(20,20,20,0.8);
+        --foregroundcolor-light:#262626;
+        --foregroundcolor-light-trans:rgba(38,38,38,0.8);
+        --foregroundcolor-lighter:#383838;
+    }
+}
+
+label.settings-label {
+    position: fixed;
+    top: 18px;
+    z-index: variables.$nav-z-index - 10;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+
+    color: var(--backgroundcolor-lighter);
+    border: solid 1px var(--backgroundcolor-lighter);
+    transition:
+        border-color variables.$transition-time ease-out,
+        color variables.$transition-time ease-out;
+
+    &:hover {
+        color: var(--backgroundcolor-lightest);
+        border: solid 1px var(--backgroundcolor-lightest);
+    }
+
+    &.secondary {
+        top: variables.$spacer-height + 18px;
+    }
+}
+
+label[for=settings-switch] {
+    right:48px;
+
+    &::after {
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        border-bottom: 2px solid;
+        border-right: 2px solid;
+        transform: rotate(45deg);
+        left: 5px;
+        top: 3px
+    }
+}
+
+label[for=image-fit-switch] {
+    right: 140px;
+    opacity: 0;
+    visibility: hidden;
+
+    &::before {
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        box-shadow:
+            5px -5px 0 -4px,
+            -5px 5px 0 -4px;
+        left: 5px;
+        top: 5px;
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        position: absolute;
+        width: 9px;
+        height: 1px;
+        background: currentColor;
+        transform: rotate(-45deg);
+        top: 11px;
+        left: 7px
+    }
+}
+
+label.settings-label.format {
+    opacity: 0;
+    visibility: hidden;
+}
+
+label[for=format-selector-panorama] {
+    right: 105px;
+    top: variables.$spacer-height + 23px;
+    height: 15px;
+}
+
+label[for=format-selector-square] {
+    right:75px;
+}
+
+label[for=format-selector-portrait] {
+    right: 55px;
+    width: 15px;
+}
+
+input.settings-input:checked {
+    + label {
+        color: var(--foregroundcolor-lightest);
+        border-color: var(--foregroundcolor-lightest);
+    }
+}
+
+#settings-backdrop {
+    position: fixed;
+    display: block;
+    z-index: variables.$nav-z-index - 20;
+    top: variables.$spacer-height;
+    right: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility variables.$transition-time ease-out, opacity variables.$transition-time ease-out;
+
+    line-height: variables.$spacer-height;
+    font-size: 1.5em;
+    box-shadow: variables.$box-shadow-down;
+    
+    background-color: var(--backgroundcolor-light-trans);
+    backdrop-filter: blur(10px) saturate(125%);
+    color: var(--foregroundcolor);
+
+    @supports not (backdrop-filter: blur(10px)) {
+        background-color: var(--backgroundcolor-light);
+        backdrop-filter: none;
+    }
+}
+
+#settings-switch:checked {
+    &:checked {
+        ~ #settings-backdrop {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        ~ label.settings-label {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+#image-fit-switch:checked {
+    ~ div.body {
+        --grid-image-mode: cover;
+    }
+}
+
+input.settings-input {
+    &:checked{
+        + label.settings-label.secondary.format{
+            cursor:default;
+        }
+    }
+}
+
+#format-selector-square:checked ~ div.body {
+    --grid-article-aspect-ratio:100%;
+}
+
+#format-selector-portrait:checked ~ div.body {
+    --grid-article-aspect-ratio:150%;
+}

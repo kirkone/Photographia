@@ -1,0 +1,9 @@
+@use 'typography';
+
+body,
+html {
+    scroll-behavior: smooth;
+    font-family: typography.$font;
+    font-weight: 100;
+    font-size: 1.1em;
+}
