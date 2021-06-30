@@ -1,17 +1,20 @@
-$backgroundcolor: rgb(20, 20, 30);
-$backgroundcolor-trans: rgba(20, 20, 30, 0.8);
-$backgroundcolor-light: rgb(31, 31, 39);
-$backgroundcolor-lighter: rgb(53, 53, 59);
+$backgroundcolor: rgb(8, 8, 8);
+$backgroundcolor-trans: rgba($backgroundcolor, 0.8);
+$backgroundcolor-light: rgb(16, 16, 16);
+$backgroundcolor-lighter: rgb(24, 24, 24);
+$backgroundcolor-lightest: rgb(32, 32, 32);
 
 $foregroundcolor: rgb(255, 255, 255);
-$foregroundcolor-light: rgb(235, 235, 255);
+$foregroundcolor-light: rgb(247, 247, 247);
+$foregroundcolor-lighter: rgb(239, 239, 239);
+$foregroundcolor-lightest: rgb(231, 231, 231);
 
 $spacer-height: 60px;
 $divider-height: 3px;
 
 $nav-width: 250px;
 
-$duration-default: 0.4s;
+$duration-default: 0.27s;
 
 $box-shadow: 0 0 20px $backgroundcolor;
 
