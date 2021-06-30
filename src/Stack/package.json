@@ -14,8 +14,8 @@
     "url": "https://github.com/kirkone/KK.AspNetCore.Images.git"
   },
   "devDependencies": {
-    "snowpack": "^3.6.2",
-    "@snowpack/plugin-sass": "^1.4.0"
+    "snowpack": "3.7.1",
+    "@snowpack/plugin-sass": "1.4.0"
   },
   "dependencies": {}
 }
