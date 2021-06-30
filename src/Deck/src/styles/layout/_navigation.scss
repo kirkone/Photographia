@@ -2,16 +2,16 @@
 @use '../base/typography';
 
 #nav {
-    opacity: 0;
-    transition: opacity variables.$duration-default ease-out;
+    filter: brightness(0%);
+    transition: filter variables.$duration-default ease-out;
     position: fixed;
     left: 0px;
     top: 0px;
     bottom: 0px;
     width: variables.$nav-width;
+    height: 100vh;
     // line-height: @spacer-height;
     font-size: 0.9em;
-    background: 0 0;
     background-color: var(--backgroundcolor-light);
 
     flex-direction: row;
@@ -155,7 +155,7 @@ label[for="nav-trigger"] {
 }
 
 .nav-trigger:checked ~ #nav {
-    opacity: 1;
+    filter: brightness(100%);
 }
 
 .nav-trigger:checked ~ #content {

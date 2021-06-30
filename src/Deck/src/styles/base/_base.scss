@@ -1,8 +1,15 @@
 @use 'typography';
 
+html {
+    overscroll-behavior: none ;
+
+}
+
 body,
 html {
+    height: 100vh;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -12,5 +19,4 @@ body {
 
     color: var(--foregroundcolor);
     background-color: var(--backgroundcolor);
-    overflow-x: hidden;
 }

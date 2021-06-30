@@ -61,11 +61,15 @@
                     font-weight: normal;
                     line-height: variables.$spacer-height;
                     background-color: var(--backgroundcolor-lighter);
-                    filter: drop-shadow(0px 0px 1px var(--backgroundcolor));
+                    text-shadow: 0px 0px 1px var(--backgroundcolor);
 
                     + *{
                        border-top: variables.$divider-height solid var(--backgroundcolor-light);
                     }
+                }
+
+                > p {
+                    padding: 0 60px
                 }
 
                 .preview {
