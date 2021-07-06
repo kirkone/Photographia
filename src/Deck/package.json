@@ -14,7 +14,9 @@
     "url": "https://github.com/kirkone/Photographia.git"
   },
   "devDependencies": {
-    "snowpack": "3.7.1",
-    "@snowpack/plugin-sass": "1.4.0"
+    "@snowpack/plugin-sass": "1.4.0",
+    "snowpack": "3.7.1"
+  },
+  "dependencies": {
   }
 }
