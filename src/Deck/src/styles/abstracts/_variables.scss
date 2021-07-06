@@ -5,6 +5,7 @@ $backgroundcolor-lighter: rgb(24, 24, 24);
 $backgroundcolor-lightest: rgb(32, 32, 32);
 
 $foregroundcolor: rgb(255, 255, 255);
+$foregroundcolor-trans: rgba($foregroundcolor, 0.8);
 $foregroundcolor-light: rgb(247, 247, 247);
 $foregroundcolor-lighter: rgb(239, 239, 239);
 $foregroundcolor-lightest: rgb(231, 231, 231);
@@ -26,5 +27,6 @@ $box-shadow: 0 0 20px $backgroundcolor;
 
     --foregroundcolor: #{$foregroundcolor};
     --foregroundcolor-light: #{$foregroundcolor-light};
+    --foregroundcolor-lighter: #{$foregroundcolor-lighter};
 }
 

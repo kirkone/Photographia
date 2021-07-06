@@ -1,5 +1,11 @@
 @use '../abstracts/variables';
 
+#content, #content * {
+    transition:
+        color variables.$duration-default ease-out,
+        background-color variables.$duration-default ease-out;
+}
+
 #content {
     position: relative;
     z-index: 200;
@@ -10,7 +16,9 @@
     width: auto;
     margin-top: variables.$divider-height * -1;
 
-    transition: all variables.$duration-default;
+    transition: transform variables.$duration-default;
+
+    color: var(--foregroundcolor);
 
     article {
         position: sticky;
@@ -23,6 +31,24 @@
         background-color: var(--backgroundcolor);
         
         align-items: flex-start;
+
+        cursor: pointer;
+
+        &:focus{
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+
+                z-index: 400;
+
+                cursor: default;
+
+            > div {
+
+            }
+        }
 
         &:last-child {
             height: calc( 100vh + #{variables.$divider-height} );

@@ -2,7 +2,7 @@
 @use '../base/typography';
 
 #nav {
-    filter: brightness(0%);
+    // filter: brightness(0%);
     transition: filter variables.$duration-default ease-out;
     position: fixed;
     left: 0px;
@@ -155,12 +155,12 @@ label[for="nav-trigger"] {
 }
 
 .nav-trigger:checked ~ #nav {
-    filter: brightness(100%);
+    // filter: brightness(100%);
 }
 
 .nav-trigger:checked ~ #content {
     transform: translateX(variables.$nav-width);
-    filter: brightness(22%);
+    // filter: brightness(22%);
     pointer-events: none;
     // margin-left: variables.$nav-width;
     box-shadow: variables.$box-shadow;
