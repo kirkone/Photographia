@@ -3,14 +3,12 @@
 
 #nav {
     // filter: brightness(0%);
-    transition: filter variables.$duration-default ease-out;
+    transition: filter variables.$duration-default variables.$transition-mode;
     position: fixed;
     left: 0px;
     top: 0px;
     bottom: 0px;
     width: variables.$nav-width;
-    height: 100vh;
-    // line-height: @spacer-height;
     font-size: 0.9em;
     background-color: var(--backgroundcolor-light);
 
@@ -49,8 +47,7 @@
         line-height: variables.$spacer-height;
         display: inline-block;
         width: 100%;
-        transition: background-color variables.$duration-default ease-out,
-            padding-left variables.$duration-default ease-out;
+        transition: padding-left variables.$duration-default variables.$transition-mode;
 
         &::after {
             content: "";
@@ -59,7 +56,7 @@
             height: 2px;
             margin: 0 -1.3rem;
             background-color: var(--foregroundcolor-light);
-            transition: width variables.$duration-default;
+            transition: width variables.$duration-default variables.$transition-mode;
         }
 
         &:hover,
@@ -75,7 +72,7 @@
 
             &::after {
                 width: 100%;
-                transition: width variables.$duration-default;
+                transition: width variables.$duration-default variables.$transition-mode;
             }
         }
 
@@ -102,11 +99,14 @@ label[for="nav-trigger"] {
     width: 35px;
     padding-left: 5px;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
     filter: drop-shadow(0px 0px 1px var(--backgroundcolor));
-    transition: left variables.$duration-default;
+    transition: left variables.$duration-default variables.$transition-mode;
 
     * {
-        transition: all variables.$duration-default;
+        transition: transform variables.$duration-default variables.$transition-mode,
+            opacity variables.$duration-default variables.$transition-mode,
+            margin variables.$duration-default variables.$transition-mode;
         box-sizing: border-box;
     }
 
@@ -183,7 +183,7 @@ body > a {
         position: absolute;
         height: 3px;
         background-color: var(--foregroundcolor);
-        transition: all variables.$duration-default;
+        transition: all variables.$duration-default variables.$transition-mode;
 
         &:nth-child(1) {
             width: 18px;
@@ -227,7 +227,7 @@ body > a {
 
     span {
         display: block;
-        transition: opacity variables.$duration-default ease-out;
+        transition: opacity variables.$duration-default variables.$transition-mode;
         color: var(--foregroundcolor);
         font-size: 1.4em;
         padding-left: 40px;

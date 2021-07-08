@@ -16,12 +16,13 @@ label.darkmode-label {
     z-index: 199;
 
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 
     color: var(--foregroundcolor-lighter);
 
     .inner{
         fill: var(--backgroundcolor-light);
-        transition: transform variables.$duration-default ease-out;
+        transition: transform variables.$duration-default variables.$transition-mode;
     }
 
     svg{

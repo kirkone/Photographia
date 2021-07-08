@@ -1,11 +1,5 @@
 @use '../abstracts/variables';
 
-#content, #content * {
-    transition:
-        color variables.$duration-default ease-out,
-        background-color variables.$duration-default ease-out;
-}
-
 #content {
     position: relative;
     z-index: 200;
@@ -16,7 +10,7 @@
     width: auto;
     margin-top: variables.$divider-height * -1;
 
-    transition: transform variables.$duration-default;
+    transition: transform variables.$duration-default variables.$transition-mode;
 
     color: var(--foregroundcolor);
 
@@ -33,6 +27,7 @@
         align-items: flex-start;
 
         cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
 
         &:focus{
                 position: fixed;
@@ -45,8 +40,15 @@
 
                 cursor: default;
 
-            > div {
+                outline: none;
 
+            > div {
+                margin: auto 0;
+                transition: margin variables.$duration-default variables.$transition-mode;
+                border: none;
+
+                img{
+                }
             }
         }
 
@@ -120,8 +122,7 @@
                                 height: 100%;
                                 background-color: var(--backgroundcolor);
                                 opacity: 0;
-                                transition: opacity variables.$duration-default
-                                    ease-out;
+                                transition: opacity variables.$duration-default variables.$transition-mode;
                             }
 
                             &::after {
@@ -140,9 +141,9 @@
                                 );
                                 transform: rotate(-45deg);
                                 transition: opacity variables.$duration-default
-                                    ease-out;
+                                    variables.$transition-mode;
                                 transition: bottom variables.$duration-default
-                                    ease-out;
+                                    variables.$transition-mode;
 
                                 opacity: 0;
                             }
