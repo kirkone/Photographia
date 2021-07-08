@@ -2,6 +2,10 @@ interface SafariTouchEvent extends TouchEvent {
     scale: number;
 }
 
+interface WebKitStyle extends CSSStyleDeclaration {
+    WebkitTransform: string;
+}
+
 function pinchZoom(imageElement: HTMLElement): void {
     let imageElementScale = 1;
 
@@ -45,14 +49,14 @@ function pinchZoom(imageElement: HTMLElement): void {
             imageElementScale = Math.min(Math.max(1, scale), 4);
 
             // Calculate how much the fingers have moved on the X and Y axis
-            const deltaX = (((event.touches[0].pageX + event.touches[1].pageX) / 2) - start.x); // x2 for accelarated movement
-            const deltaY = (((event.touches[0].pageY + event.touches[1].pageY) / 2) - start.y); // x2 for accelarated movement
+            const deltaX = (((event.touches[0].pageX + event.touches[1].pageX) / 2) - start.x) * 2; // x2 for accelarated movement
+            const deltaY = (((event.touches[0].pageY + event.touches[1].pageY) / 2) - start.y) * 2; // x2 for accelarated movement
 
             // Transform the image to make it grow and move with fingers
             const transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${imageElementScale})`;
             imageElement.style.transform = transform;
-            // imageElement.style.WebkitTransform = transform;
-            if (imageElement.parentElement?.parentElement?.style) {
+            (imageElement.style as WebKitStyle).WebkitTransform = transform;
+            if (imageElement.parentElement && imageElement.parentElement.parentElement) {
                 imageElement.parentElement.parentElement.style.zIndex = "9999";
             }
         }
@@ -61,8 +65,8 @@ function pinchZoom(imageElement: HTMLElement): void {
     imageElement.addEventListener('touchend', (event) => {
         // Reset image to it's original format
         imageElement.style.transform = "";
-        //   imageElement.style.WebkitTransform = "";
-        if (imageElement.parentElement?.parentElement?.style) {
+        (imageElement.style as WebKitStyle).WebkitTransform = "";
+        if (imageElement.parentElement && imageElement.parentElement.parentElement) {
             imageElement.parentElement.parentElement.style.zIndex = "";
         }
     });
