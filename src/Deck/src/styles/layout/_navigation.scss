@@ -2,8 +2,7 @@
 @use '../base/typography';
 
 #nav {
-    // filter: brightness(0%);
-    transition: filter variables.$duration-default variables.$transition-mode;
+    transition: opacity variables.$duration-default variables.$transition-mode;
     position: fixed;
     left: 0px;
     top: 0px;
@@ -11,6 +10,7 @@
     width: variables.$nav-width;
     font-size: 0.9em;
     background-color: var(--backgroundcolor-light);
+    opacity: 0;
 
     flex-direction: row;
     flex-flow: wrap;
@@ -30,6 +30,10 @@
             width: 100%;
             padding: 0 1rem;
             border-radius: 0;
+        }
+
+        input[type="search"] {
+            -webkit-appearance: none;
         }
     }
 
@@ -155,16 +159,26 @@ label[for="nav-trigger"] {
 }
 
 .nav-trigger:checked ~ #nav {
-    // filter: brightness(100%);
+    opacity: 1;
 }
 
 .nav-trigger:checked ~ #content {
     transform: translateX(variables.$nav-width);
     // filter: brightness(22%);
-    pointer-events: none;
     // margin-left: variables.$nav-width;
-    box-shadow: variables.$box-shadow;
     // border-left: 1px solid var(--backgroundcolor-lighter);
+}
+
+.nav-trigger:checked ~ #content::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    opacity: 1;
+    pointer-events: unset;
 }
 
 body > a {

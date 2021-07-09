@@ -9,10 +9,26 @@
     background-color: rgb(20, 20, 30);
     width: auto;
     margin-top: variables.$divider-height * -1;
+    box-shadow: variables.$box-shadow;
 
     transition: transform variables.$duration-default variables.$transition-mode;
 
     color: var(--foregroundcolor);
+
+    &::after {
+        transition: opacity variables.$duration-default variables.$transition-mode;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        background-color: var(--backgroundcolor-trans);
+    
+        opacity: 0;
+        pointer-events: none;
+    }
 
     article {
         position: sticky;
