@@ -191,7 +191,6 @@
                     transform: translate3d(var(--zoom-x), var(--zoom-y), 0) scale(var(--zoom-scale));
                     -webkit-transform: translate3d(var(--zoom-x), var(--zoom-y), 0) scale(var(--zoom-scale));
 
-                    border: variables.$divider-height solid var(--backgroundcolor-light);
                     box-shadow: variables.$box-shadow;
                 }
             }
