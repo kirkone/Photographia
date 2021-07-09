@@ -105,7 +105,7 @@ label[for="nav-trigger"] {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     filter: drop-shadow(0px 0px 1px var(--backgroundcolor));
-    transition: left variables.$duration-default variables.$transition-mode;
+    transition: transform variables.$duration-default variables.$transition-mode;
 
     * {
         transition: transform variables.$duration-default variables.$transition-mode,
@@ -141,7 +141,7 @@ label[for="nav-trigger"] {
 
 .nav-trigger:checked {
     + label {
-        left: variables.$nav-width + 16px;
+        transform: translateX(variables.$nav-width);
         > i:nth-child(1) {
             transform: translateY(-1px) rotate(-135deg);
             margin-top: 10px;
@@ -164,19 +164,9 @@ label[for="nav-trigger"] {
 
 .nav-trigger:checked ~ #content {
     transform: translateX(variables.$nav-width);
-    // filter: brightness(22%);
-    // margin-left: variables.$nav-width;
-    // border-left: 1px solid var(--backgroundcolor-lighter);
 }
 
 .nav-trigger:checked ~ #content::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
     opacity: 1;
     pointer-events: unset;
 }

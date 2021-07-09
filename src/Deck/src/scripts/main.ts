@@ -53,21 +53,24 @@ function pinchZoom(imageElement: HTMLElement): void {
             const deltaY = (((event.touches[0].pageY + event.touches[1].pageY) / 2) - start.y) * 2; // x2 for accelarated movement
 
             // Transform the image to make it grow and move with fingers
-            const transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${imageElementScale})`;
-            imageElement.style.transform = transform;
-            (imageElement.style as WebKitStyle).WebkitTransform = transform;
-            if (imageElement.parentElement && imageElement.parentElement.parentElement) {
-                imageElement.parentElement.parentElement.style.zIndex = "9999";
+            imageElement.style.setProperty('--zoom-x', `${deltaX}px`);
+            imageElement.style.setProperty('--zoom-y', `${deltaY}px`);
+            imageElement.style.setProperty('--zoom-scale', `${imageElementScale}`);
+
+            const articleElement = imageElement.closest('article');
+            if (articleElement) {
+                articleElement.classList.add('zooming');
             }
         }
     });
 
     imageElement.addEventListener('touchend', (event) => {
         // Reset image to it's original format
-        imageElement.style.transform = "";
-        (imageElement.style as WebKitStyle).WebkitTransform = "";
-        if (imageElement.parentElement && imageElement.parentElement.parentElement) {
-            imageElement.parentElement.parentElement.style.zIndex = "";
+        imageElement.removeAttribute('style');
+
+        const articleElement = imageElement.closest('article');
+        if (articleElement) {
+            articleElement.classList.remove('zooming');
         }
     });
 }
