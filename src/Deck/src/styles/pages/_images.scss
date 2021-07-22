@@ -48,28 +48,8 @@
 
         content-visibility: auto;
 
-        &:target{
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: 100vw;
-
-            z-index: 400;
-
-            outline: none;
-
-            > div {
-                margin: auto 0;
-                border: none;
-
-                img{
-                }
-            }
-        }
-
         &:last-child {
-            height: 100vh;
+            height: calc(100vh + #{variables.$divider-height});
         }
 
         .info {
@@ -112,8 +92,14 @@
                     }
                 }
 
+                > h2 {
+                    padding: 0 60px 1em 60px;
+                    font-size: 1.1em;
+                    font-weight: normal;
+                }
+
                 > p {
-                    padding: 0 60px
+                    padding: 0 60px .5em 60px;
                 }
 
                 .preview {

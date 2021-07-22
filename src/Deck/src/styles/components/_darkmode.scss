@@ -50,5 +50,7 @@ input.darkmode-input:checked {
         --foregroundcolor: #{variables.$backgroundcolor};
         --foregroundcolor-light: #{variables.$backgroundcolor-light};
         --foregroundcolor-lighter: #{variables.$backgroundcolor-lighter};
+
+        --shadow-color: #{variables.$shadow-color-light};
     }
 }

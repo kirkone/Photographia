@@ -2,7 +2,6 @@
 @use '../base/typography';
 
 #nav {
-    transition: opacity variables.$duration-default variables.$transition-mode;
     position: fixed;
     left: 0px;
     top: 0px;
@@ -10,7 +9,6 @@
     width: variables.$nav-width;
     font-size: 0.9em;
     background-color: var(--backgroundcolor-light);
-    opacity: 0;
 
     flex-direction: row;
     flex-flow: wrap;
@@ -159,7 +157,7 @@ label[for="nav-trigger"] {
 }
 
 .nav-trigger:checked ~ #nav {
-    opacity: 1;
+
 }
 
 .nav-trigger:checked ~ #content {
