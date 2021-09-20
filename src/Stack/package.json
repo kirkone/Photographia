@@ -1,5 +1,5 @@
 {
-  "name": "kk.aspnetcore.images.samples.web",
+  "name": "photographia.stack",
   "version": "1.0.0",
   "description": "A sample for the `KK.AspNetCore.Images` NuGet package.",
   "main": "index.html",
@@ -11,11 +11,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kirkone/KK.AspNetCore.Images.git"
+    "url": "https://github.com/kirkone/Photographia.git"
   },
   "devDependencies": {
-    "snowpack": "3.8.8",
-    "@snowpack/plugin-sass": "1.4.0"
   },
   "dependencies": {}
 }

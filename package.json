@@ -1,0 +1,33 @@
+{
+  "name": "photographia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:deck": "npm start --workspace=src/Deck",
+    "start:grid": "npm start --workspace=src/Grid",
+    "start:masonry": "npm start --workspace=src/Masonry",
+    "start:stack": "npm start --workspace=src/Stack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirkone/Photographia.git"
+  },
+  "author": "Kirsten Kluge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kirkone/Photographia/issues"
+  },
+  "homepage": "https://github.com/kirkone/Photographia#readme",
+  "workspaces": [
+    "src/Deck",
+    "src/Grid",
+    "src/Masonry",
+    "src/Stack"
+  ],
+  "devDependencies": {
+    "@snowpack/plugin-sass": "1.4.0",
+    "snowpack": "3.8.8"
+  }
+}

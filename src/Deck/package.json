@@ -1,5 +1,5 @@
 {
-  "name": "webseite",
+  "name": "photographia.deck",
   "version": "1.0.0",
   "description": "A web site to show images in a clean way.",
   "main": "index.html",
@@ -14,8 +14,6 @@
     "url": "https://github.com/kirkone/Photographia.git"
   },
   "devDependencies": {
-    "@snowpack/plugin-sass": "1.4.0",
-    "snowpack": "3.8.8"
   },
   "dependencies": {}
 }
