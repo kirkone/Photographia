@@ -24,12 +24,10 @@ jobs:
           node-version: 14
       - name: Install dependencies
         run: npm install
-        with:
-          working-directory: /
+        working-directory: /
       - name: Build Deck
         run: npm run build
-        with:
-          working-directory: /src/Deck
+        working-directory: /src/Deck
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
