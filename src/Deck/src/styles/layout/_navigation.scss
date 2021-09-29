@@ -3,12 +3,18 @@
 
 #nav {
     position: fixed;
-    left: 0px;
+    z-index: 200;
+    left: variables.$nav-width * -1;
     top: 0px;
     bottom: 0px;
     width: variables.$nav-width;
     font-size: 0.9em;
     background-color: var(--backgroundcolor-light);
+
+    transition: transform variables.$duration-default variables.$transition-mode,
+                background-color variables.$duration-default variables.$transition-mode;
+
+    transform: translateX(0);
 
     flex-direction: row;
     flex-flow: wrap;
@@ -21,6 +27,10 @@
         input {
             color: var(--backgroundcolor-light);
             background-color: var(--foregroundcolor-light);
+
+            transition: background-color variables.$duration-default variables.$transition-mode,
+                        color variables.$duration-default variables.$transition-mode;
+
             border: none;
             font-size: 1.2em;
             line-height: variables.$spacer-height;
@@ -49,7 +59,9 @@
         line-height: variables.$spacer-height;
         display: inline-block;
         width: 100%;
-        transition: padding-left variables.$duration-default variables.$transition-mode;
+        transition: padding-left variables.$duration-default variables.$transition-mode,
+                    color variables.$duration-default variables.$transition-mode,
+                    background-color variables.$duration-default variables.$transition-mode;
 
         &::after {
             content: "";
@@ -58,7 +70,8 @@
             height: 2px;
             margin: 0 -1.3rem;
             background-color: var(--foregroundcolor-light);
-            transition: width variables.$duration-default variables.$transition-mode;
+            transition: width variables.$duration-default variables.$transition-mode,
+                        background-color variables.$duration-default variables.$transition-mode;
         }
 
         &:hover,
@@ -74,7 +87,6 @@
 
             &::after {
                 width: 100%;
-                transition: width variables.$duration-default variables.$transition-mode;
             }
         }
 
@@ -122,6 +134,7 @@ label[for="nav-trigger"] {
         height: 3px;
         width: 25px;
         background-color: var(--foregroundcolor);
+        transition: background-color variables.$duration-default variables.$transition-mode;
 
         &:nth-child(1) {
             top: 6px;
@@ -157,11 +170,8 @@ label[for="nav-trigger"] {
 }
 
 .nav-trigger:checked ~ #nav {
-
-}
-
-.nav-trigger:checked ~ #content {
     transform: translateX(variables.$nav-width);
+
 }
 
 .nav-trigger:checked ~ #content::after {
