@@ -25,6 +25,7 @@ label.darkmode-label {
     .inner{
         fill: var(--backgroundcolor-light);
         transition: all variables.$duration-default variables.$transition-mode;
+        transform: translateX(0) translateY(0);
     }
 
     svg{
@@ -35,11 +36,9 @@ label.darkmode-label {
 }
 
 input.darkmode-input:checked {
-    ~ label.darkmode-label{
+    ~ * label.darkmode-label{
         .inner{
-            transform: translateX(-25%) translateY(-10%);
-            // stroke-width: 25%;
-            // stroke: var(--backgroundcolor-light);
+            transform: translateX(15%) translateY(-15%) scale(1.15);
         }
     }
 
