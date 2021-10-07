@@ -59,7 +59,7 @@
         }
 
         > div {
-            position: relative;
+            //position: relative;
             width: 150vh;
             max-width: 100%;
 
@@ -174,7 +174,9 @@
         }
 
         &.zooming{
+            position: absolute;
             z-index: 9999;
+            overflow: visible!important;
 
             > div {
                 img{
