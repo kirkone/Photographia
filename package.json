@@ -4,11 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:deck": "npm start --workspace=src/Deck",
-    "start:grid": "npm start --workspace=src/Grid",
-    "start:masonry": "npm start --workspace=src/Masonry",
-    "start:stack": "npm start --workspace=src/Stack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:deck": "npm run dev --workspace=src/Deck",
+    "start:grid": "npm run dev --workspace=src/Grid",
+    "start:masonry": "npm run dev --workspace=src/Masonry",
+    "start:stack": "npm run dev --workspace=src/Stack"
   },
   "repository": {
     "type": "git",
@@ -27,7 +26,7 @@
     "src/Stack"
   ],
   "devDependencies": {
-    "@snowpack/plugin-sass": "1.4.0",
-    "snowpack": "3.8.8"
+    "sass": "^1.54.7",
+    "vite": "3.0.9"
   }
 }

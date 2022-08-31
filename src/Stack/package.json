@@ -4,8 +4,9 @@
   "description": "A sample for the `KK.AspNetCore.Images` NuGet package.",
   "main": "index.html",
   "scripts": {
-    "start": "snowpack dev --reload",
-    "build": "snowpack build"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "author": "Kirsten Kluge",
   "license": "MIT",
