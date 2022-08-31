@@ -2,7 +2,6 @@
 
 #content {
     position: relative;
-    // z-index: 200;
     display: flex;
     flex: none;
     flex-flow: column nowrap;
@@ -12,6 +11,7 @@
     color: var(--foregroundcolor);
 
     &::after {
+        z-index: 150;
         transition: opacity variables.$duration-default variables.$transition-mode,
                     background-color variables.$duration-default variables.$transition-mode;
         content: "";
@@ -28,8 +28,7 @@
     }
 
     article {
-        position: sticky;
-        top: variables.$divider-height * -1;
+        z-index: 1;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -40,13 +39,19 @@
         
         align-items: flex-start;
 
-        //cursor: pointer;
         -webkit-tap-highlight-color: transparent;
 
-        content-visibility: auto;
+        margin-bottom: max(
+            calc(-100% / (var(--width) / var(--height))),
+            max(-100vh, var(--height) * -1px)
+        );
 
         &:last-child {
             height: calc(100vh + #{variables.$divider-height});
+
+            div {
+                aspect-ratio: var(--width) / var(--height);
+            }
         }
 
         .info {
@@ -59,20 +64,28 @@
         }
 
         > div {
-            //position: relative;
             width: 150vh;
             max-width: 100%;
+            max-height: 200vh;
+            aspect-ratio: var(--width) / calc(var(--height) * 2);
+            display: inline-block;
 
             border-top: variables.$divider-height solid var(--backgroundcolor);
             transition: border-top-color variables.$duration-default variables.$transition-mode;
 
             img {
+                z-index: 2;
+                width: 100%;
                 max-width: 100%;
                 max-height: 100vh;
                 height: auto;
                 object-fit: contain;
                 margin: auto;
                 display: block;
+
+                position: sticky;
+                top: variables.$divider-height * -1;
+                content-visibility: auto;
             }
 
             &.devider {
