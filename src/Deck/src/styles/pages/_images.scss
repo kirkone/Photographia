@@ -187,9 +187,10 @@
         }
 
         &.zooming{
-            position: absolute;
+            position: relative;
             z-index: 9999;
-            overflow: visible!important;
+            background-color: transparent;
+            transition: none;
 
             > div {
                 img{

@@ -1,12 +1,11 @@
+// this code is used from:
+// https://vmorneau.me/new-pinch-and-zoom/
+
 interface SafariTouchEvent extends TouchEvent {
     scale: number;
 }
 
 const isSafariTouchEvent = (e: TouchEvent): e is SafariTouchEvent => "scale" in e; 
-
-interface WebKitStyle extends CSSStyleDeclaration {
-    WebkitTransform: string;
-}
 
 function pinchZoom(imageElement: HTMLElement): void {
     let imageElementScale = 1;
@@ -51,9 +50,8 @@ function pinchZoom(imageElement: HTMLElement): void {
             imageElementScale = Math.min(Math.max(1, scale), 4);
 
             // Calculate how much the fingers have moved on the X and Y axis
-            const [touch1, touch2] = event.touches;
-            const deltaX = (((touch1.pageX + touch2.pageX) / 2) - start.x) * 2; // x2 for accelarated movement
-            const deltaY = (((touch1.pageY + touch2.pageY) / 2) - start.y) * 2; // x2 for accelarated movement
+            const deltaX = (((event.touches[0].pageX + event.touches[1].pageX) / 2) - start.x) * 2; // x2 for accelarated movement
+            const deltaY = (((event.touches[0].pageY + event.touches[1].pageY) / 2) - start.y) * 2; // x2 for accelarated movement
 
             // Transform the image to make it grow and move with fingers
             imageElement.style.setProperty('--zoom-x', `${deltaX}px`);
@@ -62,7 +60,7 @@ function pinchZoom(imageElement: HTMLElement): void {
         }
     });
 
-    imageElement.addEventListener('touchend', (event) => {
+    imageElement.addEventListener('touchend', () => {
         // Reset image to it's original format
         imageElement.removeAttribute('style');
 
@@ -76,3 +74,5 @@ function pinchZoom(imageElement: HTMLElement): void {
 document.querySelectorAll("#content article img").forEach(element => {
     pinchZoom(element as HTMLElement);
 });
+
+ export {};
