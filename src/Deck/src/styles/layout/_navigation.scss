@@ -1,6 +1,22 @@
 @use '../abstracts/variables';
 @use '../base/typography';
 
+a.nav-skip{
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    transform: translateY(-10rem);
+    transition: transform 0.3s ease-in-out;
+    padding: 0 0.5rem;
+    background: var(--backgroundcolor-light);
+    color: var(--foregroundcolor-light);
+    z-index: 999;
+
+    &:focus {
+        transform: translateY(1rem);
+    }
+}
+
 #nav {
     position: fixed;
     z-index: 200;
@@ -74,6 +90,7 @@
                         background-color variables.$duration-default variables.$transition-mode;
         }
 
+        &:focus-within,
         &:hover,
         &.active {
             &.active {
@@ -153,6 +170,7 @@ label[for="nav-trigger"] {
     }
 }
 
+.nav-trigger:has(~ #nav:focus-within),
 .nav-trigger:checked {
     + label {
         transform: translateX(variables.$nav-width);
@@ -172,11 +190,13 @@ label[for="nav-trigger"] {
     }
 }
 
+#nav:focus-within,
 .nav-trigger:checked ~ #nav {
     transform: translateX(variables.$nav-width);
 
 }
 
+#nav:focus-within ~ #content::after,
 .nav-trigger:checked ~ #content::after {
     opacity: 1;
     pointer-events: unset;
