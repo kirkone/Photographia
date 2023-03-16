@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start:index": "npm run dev --workspace=src/Index",
     "start:deck": "npm run dev --workspace=src/Deck",
     "start:grid": "npm run dev --workspace=src/Grid",
     "start:masonry": "npm run dev --workspace=src/Masonry",
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/kirkone/Photographia#readme",
   "workspaces": [
+    "src/Index",
     "src/Deck",
     "src/Grid",
     "src/Masonry",

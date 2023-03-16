@@ -1,0 +1,10 @@
+$backgroundcolor: rgb(8, 8, 8);
+
+$foregroundcolor: rgb(255, 255, 255);
+
+:root {
+    --backgroundcolor: #{$backgroundcolor};
+
+    --foregroundcolor: #{$foregroundcolor};
+}
+

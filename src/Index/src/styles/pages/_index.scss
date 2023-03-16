@@ -1,0 +1,32 @@
+@use '../abstracts/variables';
+
+h1{
+    font-size: 3em;
+    font-weight: 400;
+}
+
+p{
+    font-size: 1em;
+    margin-top: .5em;
+}
+
+a {
+    color: var(--foregroundcolor);
+}
+
+ul {
+    margin-top: 1em;
+
+    li {
+        list-style: none;
+        a {
+            text-decoration: none;
+            font-size: 2em;
+            border-bottom: 1px solid var(--backgroundcolor);
+
+            &:hover {
+                border-bottom: 1px solid var(--foregroundcolor);
+            }
+        }
+    }
+}
