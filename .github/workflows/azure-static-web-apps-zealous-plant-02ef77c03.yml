@@ -15,19 +15,19 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: true
       - name: Setup NodeJS
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
       - name: Install dependencies
         run: npm install
         working-directory: ./
-      - name: Build Deck
-        run: npm run build
-        working-directory: ./src/Deck
+      - name: Build 
+        run: npm run build:all
+        working-directory: ./
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -37,7 +37,7 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "./src/Deck/build" # App source code path
+          app_location: "./build" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "" # Built app content directory - optional
           skip_app_build: true

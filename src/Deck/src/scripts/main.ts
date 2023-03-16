@@ -75,4 +75,4 @@ document.querySelectorAll("#content article img").forEach(element => {
     pinchZoom(element as HTMLElement);
 });
 
- export {};
+export {};

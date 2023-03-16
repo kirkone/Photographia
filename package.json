@@ -7,7 +7,8 @@
     "start:deck": "npm run dev --workspace=src/Deck",
     "start:grid": "npm run dev --workspace=src/Grid",
     "start:masonry": "npm run dev --workspace=src/Masonry",
-    "start:stack": "npm run dev --workspace=src/Stack"
+    "start:stack": "npm run dev --workspace=src/Stack",
+    "build:all": "npm run build --workspaces --if-present -- --emptyOutDir"
   },
   "repository": {
     "type": "git",
@@ -26,8 +27,8 @@
     "src/Stack"
   ],
   "devDependencies": {
-    "sass": "^1.59.2",
+    "sass": "^1.59.3",
     "typescript": "^4.9.5",
-    "vite": "4.1.4"
+    "vite": "4.2.0"
   }
 }
