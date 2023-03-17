@@ -1,0 +1,46 @@
+@use '../abstracts/variables';
+
+#content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-gap: variables.$grid-gap;
+    justify-content: center;
+
+    margin: variables.$grid-gap;
+
+    > article {
+        flex-grow: calc(var(--width) * (100000 / var(--height)));
+        flex-basis: calc(15rem * (var(--width) / var(--height)));
+        aspect-ratio: var(--width) / var(--height);
+        position: relative;
+
+        background-color: var(--backgroundcolor-image);
+        background-size: cover;
+        cursor: pointer;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-image: var(--background-image);
+            filter: blur(25px);
+        }
+
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            outline: solid 2px var(--backgroundcolor-image);
+        }
+    }
+
+    &:after {
+        content: "";
+        flex-grow: 1000000000;
+    }
+}

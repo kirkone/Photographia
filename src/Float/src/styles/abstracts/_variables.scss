@@ -1,0 +1,14 @@
+$backgroundcolor: hsl(0, 0%, 93%);
+
+$backgroundcolor-image: hsl(0, 0%, 100%);
+
+$foregroundcolor: hsl(240, 100%, 3%);
+
+$grid-gap: 50px;
+
+:root {
+    --backgroundcolor: #{$backgroundcolor};
+    --backgroundcolor-image: #{$backgroundcolor-image};
+
+    --foregroundcolor: #{$foregroundcolor};
+}

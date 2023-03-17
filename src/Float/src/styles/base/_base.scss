@@ -1,0 +1,17 @@
+@use 'typography';
+
+body,
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: typography.$font;
+    font-weight: 100;
+    font-size: 1.1em;
+
+    color: var(--foregroundcolor);
+    background-color: var(--backgroundcolor);
+
+    --scrollbar-width: calc(100vw - 100%);
+}
