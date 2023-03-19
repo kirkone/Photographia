@@ -1,10 +1,14 @@
-$backgroundcolor: hsl(0, 0%, 93%);
+$backgroundcolor: hsl(0, 0%, 97%);
 
 $backgroundcolor-image: hsl(0, 0%, 100%);
 
-$foregroundcolor: hsl(240, 100%, 3%);
+$foregroundcolor: hsl(0, 0%, 3%);
 
 $grid-gap: 50px;
+
+$duration-default: 270ms;
+$transition-mode: ease-in-out;
+
 
 :root {
     --backgroundcolor: #{$backgroundcolor};

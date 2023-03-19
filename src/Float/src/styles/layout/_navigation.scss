@@ -1,2 +1,18 @@
 @use '../abstracts/variables';
 @use '../base/typography';
+
+a.nav-skip{
+    position: fixed;
+    top: 0;
+    left: 1rem;
+    transform: translateY(-10rem);
+    transition: transform 0.3s ease-in-out;
+    padding: 0 0.5rem;
+    background: var(--backgroundcolor-light);
+    color: var(--foregroundcolor-light);
+    z-index: 999;
+
+    &:focus {
+        transform: translateY(1rem);
+    }
+}
