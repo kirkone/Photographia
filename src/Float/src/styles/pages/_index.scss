@@ -11,13 +11,12 @@
 
     > article {
         flex-grow: calc(var(--width) * (100000 / var(--height)));
-        flex-basis: calc(15rem * (var(--width) / var(--height)));
+        flex-basis: calc(min(10rem, 30vw) * (var(--width) / var(--height)));
         aspect-ratio: var(--width) / var(--height);
         position: relative;
 
         background-color: var(--backgroundcolor-image);
         background-size: cover;
-        box-shadow: 0 0 10px 0px rgba(0,0,0,0.3);
 
         cursor: pointer;
 
