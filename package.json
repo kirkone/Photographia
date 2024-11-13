@@ -9,6 +9,7 @@
     "start:float": "npm run dev --workspace=src/Float",
     "start:grid": "npm run dev --workspace=src/Grid",
     "start:masonry": "npm run dev --workspace=src/Masonry",
+    "start:site": "npm run dev --workspace=src/Site",
     "start:stack": "npm run dev --workspace=src/Stack",
     "build:all": "npm run build --workspaces --if-present -- --emptyOutDir"
   },
@@ -28,11 +29,12 @@
     "src/Float",
     "src/Grid",
     "src/Masonry",
+    "src/Site",
     "src/Stack"
   ],
   "devDependencies": {
-    "sass": "^1.62.1",
-    "typescript": "^5.0.4",
-    "vite": "4.3.5"
+    "sass": "^1.80.7",
+    "typescript": "^5.6.3",
+    "vite": "5.4.11"
   }
 }

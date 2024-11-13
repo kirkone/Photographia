@@ -1,0 +1,9 @@
+@use "../abstracts/variables";
+
+footer {
+    grid-column: breakout;
+    display: flex;
+    justify-content: flex-end;
+    font-size: var(--font-size-1);
+    margin-top: 1rem;
+}

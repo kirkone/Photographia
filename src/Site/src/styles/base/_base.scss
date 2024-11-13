@@ -1,0 +1,31 @@
+@use 'typography';
+
+html {
+    overflow: hidden;
+}
+
+body {
+    font-family: typography.$font;
+    font-weight: typography.$font-weight;
+
+    background-color: hsl(var(--color-background-hsl));
+    color: hsl(var(--color-hsl));
+
+    position: relative;
+    height: 100dvh;
+
+    display: grid;
+    grid-template-columns:
+        [full-width-start] minmax(var(--padding), 1fr) [breakout-start] minmax(0, var(--breakout-size)) [content-start] min(100% - (var(--padding) * 2),
+            var(--content-max-width)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(var(--padding), 1fr) [full-width-end];
+
+    overflow: auto;
+    background-color: hsl(var(--color-background-hsl));
+    scrollbar-gutter: stable;
+
+    &:has(.nav-trigger:checked),
+    &:has(.nav-trigger ~ #nav:focus-within),
+    &:has(.gallery > article:focus) {
+        overflow: hidden;
+    }
+}

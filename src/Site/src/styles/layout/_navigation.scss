@@ -1,0 +1,105 @@
+.nav-trigger {
+    position: fixed;
+    clip: rect(0, 0, 0, 0);
+}
+
+label[for=nav-trigger] {
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 270ms ease-in-out;
+
+    display: inline-flex;
+
+    transform: rotate(-90deg);
+
+    color: hsl(var(--color-light-hsl));
+
+    &:hover {
+        color: hsl(var(--color-dark-hsl));
+    }
+
+    span {
+        transition: transform 270ms ease-in-out,
+            opacity 270ms ease-in-out;
+
+        &:first-child {
+            display: none;
+        }
+    }
+}
+
+.nav-trigger:has(~ #nav:focus-within),
+.nav-trigger:checked {
+    ~* label[for="nav-trigger"] {
+        >span:nth-child(2) {
+            transform: translateX(40%) rotate(-135deg);
+        }
+
+        >span:nth-child(3) {
+            opacity: 0;
+        }
+
+        >span:nth-child(4) {
+            transform: translateX(-110%) translateY(5%) rotate(135deg);
+        }
+    }
+}
+
+menu {
+    grid-column: full-width;
+    position: fixed;
+    height: 100dvh;
+    width: 100dvw;
+    z-index: 200;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    gap: var(--padding);
+
+    transition: opacity 270ms ease-in-out, visibility 270ms ease-in-out;
+
+    opacity: 0;
+    visibility: hidden;
+
+    background-color: hsl(var(--color-background-hsl) / 0.8);
+    -webkit-backdrop-filter: saturate(180%) blur(2rem);
+    backdrop-filter: saturate(180%) blur(2rem);
+
+    padding-top: calc(var(--padding) * 6);
+
+    section {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        h3 {
+            font-weight: 100;
+            font-size: var(--font-size-3);
+            margin-bottom: var(--padding);
+        }
+
+        a {
+            font-weight: 100;
+            font-size: var(--font-size-3);
+            text-decoration: none;
+
+            color: hsl(var(--color-light-hsl));
+
+            &:hover {
+                color: hsl(var(--color-dark-hsl));
+            }
+        }
+    }
+}
+
+menu:focus-within,
+.nav-trigger:checked~menu {
+    opacity: 1;
+    visibility: visible;
+}
+

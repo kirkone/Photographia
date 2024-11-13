@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple photo website.">
+    <title>Webseite</title>
+    <link rel="stylesheet" href="/styles/main.scss">
+</head>
+
+<body>
+    <input type="checkbox" id="nav-trigger" class="nav-trigger">
+
+    <menu>
+        <section>
+            <h3>Years</h3>
+            <a href="#">2024</a>
+            <a href="#">2023</a>
+            <a href="#">2022</a>
+            <a href="#">2021</a>
+            <a href="#">2020</a>
+        </section>
+        <section>
+            <h3>Topics</h3>
+            <a href="#">Cat</a>
+            <a href="#">Nature</a>
+            <a href="#">Urban</a>
+        </section>
+    </menu>
+
+    <header>
+        <div>
+
+            <h2>
+                <label for="nav-trigger" title="Menu">
+                    <span>Menu</span>
+                    <span>i</span>
+                    <span>i</span>
+                    <span>i</span>
+                </label>
+                <a href="#">Kirsten Kluge</a>
+            </h2>
+            <nav>
+                <a href="#">About</a>
+                <a href="#">Gear</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>Ansichtssachen</h1>
+        <p>
+            “<cite>Ansichtssache</cite>” bedeutet, dass die Bewertung einer Sache nicht auf objektiven Kriterien,
+            sondern auf der eigenen Meinung oder Einschätzung beruht. <br>
+            Es ist ein Begriff, der oft verwendet wird, um auszudrücken, dass es unterschiedliche Auffassungen oder
+            Perspektiven gibt.
+        </p>
+        <p>
+            Gleiches gilt auch für Bilder - Ansichtssachen eben!
+        </p>
+        <h2>2024</h2>
+
+        <section class="gallery">
+
+            <article tabindex="0" id="00001" style="--width:640; --height:427;">
+                <picture>
+                    <img alt="Ein tolles Bild" loading="lazy" decoding="async"
+                        src="https://photo.kirk.one/2021/012670/640.jpg" width="640" height="427">
+                </picture>
+                <aside>
+                    <p>Ein tolles Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img loading="lazy" decoding="async" src="https://photo.kirk.one/2021/012670/1920.jpg" srcset="
+                            https://photo.kirk.one/2021/012670/640.jpg 640w,
+                            https://photo.kirk.one/2021/012670/1024.jpg 1024w,
+                            https://photo.kirk.one/2021/012670/1280.jpg 1280w,
+                            https://photo.kirk.one/2021/012670/1920.jpg 1920w,
+                            https://photo.kirk.one/2021/012670/2560.jpg 2560w,
+                            https://photo.kirk.one/2021/012670/3840.jpg 3840w
+                        " width="3840" height="2560" alt="Ein Bild" sizes="100vw, 100vh">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00002" style="--width:640; --height:427;">
+                <picture>
+                    <img alt="Noch ein tolles Bild" loading="lazy" decoding="async"
+                        src="https://photo.kirk.one/2021/012493/640.jpg" width="640" height="427">
+                </picture>
+                <aside>
+                    <p>Noch ein tolles Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img loading="lazy" src="https://photo.kirk.one/2021/012493/1920.jpg" srcset="
+                            https://photo.kirk.one/2021/012493/640.jpg 640w,
+                            https://photo.kirk.one/2021/012493/1024.jpg 1024w,
+                            https://photo.kirk.one/2021/012493/1280.jpg 1280w,
+                            https://photo.kirk.one/2021/012493/1920.jpg 1920w,
+                            https://photo.kirk.one/2021/012493/2560.jpg 2560w,
+                            https://photo.kirk.one/2021/012493/3840.jpg 3840w
+                            " width="3840" height="2560" alt="Ein Bild" sizes="100vw, 100vh">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00003" style="--width:1000; --height:600;">
+                <picture>
+                    <img alt="" loading="lazy" decoding="async" src="https://unsplash.it/1000/600/?image=222"
+                        width="1000" height="600">
+                </picture>
+                <aside>
+                    <p>Ein noch tolleres Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img alt="Ein tolles Bild" loading="lazy" decoding="async"
+                            src="https://unsplash.it/2000/1200/?image=222" width="2000" height="1200">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00004" style="--width:200; --height:600;">
+                <picture>
+                    <img alt="" loading="lazy" decoding="async" src="https://unsplash.it/200/600/?image=1009"
+                        width="200" height="600">
+                </picture>
+                <aside>
+                    <p>Ein noch viel tolleres Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img alt="Ein noch viel tolleres Bild" loading="lazy" decoding="async"
+                            src="https://unsplash.it/400/1200/?image=1009" width="400" height="1200">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00005" style="--width:500; --height:600;">
+                <picture>
+                    <img alt="" loading="lazy" decoding="async" src="https://unsplash.it/500/600/?image=1006"
+                        width="500" height="600">
+                </picture>
+                <aside>
+                    <p>Ein noch viel tolleres Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img alt="Ein noch viel tolleres Bild" loading="lazy" decoding="async"
+                            src="https://unsplash.it/1000/1200/?image=1006" width="1000" height="1200">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00006" style="--width:400; --height:600;">
+                <picture>
+                    <img alt="" loading="lazy" decoding="async" src="https://unsplash.it/400/600/?image=1011"
+                        width="400" height="600">
+                </picture>
+                <aside>
+                    <p>Ein noch viel tolleres Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img alt="Ein noch viel tolleres Bild" loading="lazy" decoding="async"
+                            src="https://unsplash.it/800/1200/?image=1011" width="800" height="1200">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00007" style="--width:900; --height:600;">
+                <picture>
+                    <img alt="" loading="lazy" decoding="async" src="https://unsplash.it/900/600/?image=1008"
+                        width="900" height="600">
+                </picture>
+                <aside>
+                    <p>Ein noch viel tolleres Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img alt="Ein noch viel tolleres Bild" loading="lazy" decoding="async"
+                            src="https://unsplash.it/1800/1200/?image=1008" width="1800" height="1200">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00008" style="--width:350; --height:600;">
+                <picture>
+                    <img alt="" loading="lazy" decoding="async" src="https://unsplash.it/350/600/?image=1015"
+                        width="350" height="600">
+                </picture>
+                <aside>
+                    <p>Ein noch viel tolleres Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img alt="Ein noch viel tolleres Bild" loading="lazy" decoding="async"
+                            src="https://unsplash.it/700/1200/?image=1015" width="700" height="1200">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00009" style="--width:950; --height:600;">
+                <picture>
+                    <img alt="" loading="lazy" decoding="async" src="https://unsplash.it/950/600/?image=1016"
+                        width="950" height="600">
+                </picture>
+                <aside>
+                    <p>Ein noch viel tolleres Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img alt="Ein noch viel tolleres Bild" loading="lazy" decoding="async"
+                            src="https://unsplash.it/1900/1200/?image=1016" width="1900" height="1200">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00010" style="--width:750; --height:600;">
+                <picture>
+                    <img alt="" loading="lazy" decoding="async" src="https://unsplash.it/750/600/?image=1018"
+                        width="750" height="600">
+                </picture>
+                <aside>
+                    <p>Ein noch viel tolleres Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img alt="Ein noch viel tolleres Bild" loading="lazy" decoding="async"
+                            src="https://unsplash.it/1500/1200/?image=1018" width="1500" height="1200">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00011" style="--width:1150; --height:600;">
+                <picture>
+                    <img alt="" loading="lazy" decoding="async" src="https://unsplash.it/1150/600/?image=1021"
+                        width="1150" height="600">
+                </picture>
+                <aside>
+                    <p>Ein noch viel tolleres Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img alt="Ein noch viel tolleres Bild" loading="lazy" decoding="async"
+                            src="https://unsplash.it/2300/1200/?image=1021" width="2300" height="1200">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00012" style="--width:900; --height:600;">
+                <picture>
+                    <img alt="" loading="lazy" decoding="async" src="https://unsplash.it/900/600/?image=1033"
+                        width="900" height="600">
+                </picture>
+                <aside>
+                    <p>Ein noch viel tolleres Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img alt="Ein noch viel tolleres Bild" loading="lazy" decoding="async"
+                            src="https://unsplash.it/1800/1200/?image=1033" width="1800" height="1200">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00013" style="--width:900; --height:600;">
+                <picture>
+                    <img alt="" loading="lazy" decoding="async" src="https://unsplash.it/900/600/?image=1044"
+                        width="900" height="600">
+                </picture>
+                <aside>
+                    <p>Ein noch viel tolleres Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img alt="Ein noch viel tolleres Bild" loading="lazy" decoding="async"
+                            src="https://unsplash.it/1800/1200/?image=1044" width="1800" height="1200">
+                    </picture>
+                </figure>
+            </article>
+
+            <article tabindex="0" id="00013" style="--width:900; --height:600;">
+                <picture>
+                    <img alt="" loading="lazy" decoding="async" src="https://unsplash.it/900/600/?image=1055"
+                        width="900" height="600">
+                </picture>
+                <aside>
+                    <p>Ein noch viel tolleres Bild</p>
+                    <p>
+                        F2.8 12mm
+                    </p>
+                </aside>
+                <figure>
+                    <a href="#!" title="close">close</a>
+                    <picture>
+                        <img alt="Ein noch viel tolleres Bild" loading="lazy" decoding="async"
+                            src="https://unsplash.it/1800/1200/?image=1055" width="1800" height="1200">
+                    </picture>
+                </figure>
+            </article>
+
+    </main>
+
+    <footer>
+        © 2024 Kirsten Kluge
+    </footer>
+
+
+
+<!--
+
+    <section id="content">
+
+        <article id="dsc03720" tabindex="0" style="--width:3840; --height:2560;">
+            <div>
+                <a href="./detail.html">
+                    <img loading="lazy" src="https://photo.kirk.one/2021/012670/1920.jpg" srcset="
+                            https://photo.kirk.one/2021/012670/640.jpg 640w,
+                            https://photo.kirk.one/2021/012670/1024.jpg 1024w,
+                            https://photo.kirk.one/2021/012670/1280.jpg 1280w,
+                            https://photo.kirk.one/2021/012670/1920.jpg 1920w,
+                            https://photo.kirk.one/2021/012670/2560.jpg 2560w,
+                            https://photo.kirk.one/2021/012670/3840.jpg 3840w
+                        " width="3840" height="2560" alt="Ein Bild" sizes="100vw, 100vh">
+                </a>
+            </div>
+        </article>
+        <article id="dsc03535" tabindex="0" style="--width:3840; --height:2560;">
+            <div>
+                <a href="./">
+                    <img loading="lazy" src="https://photo.kirk.one/2021/012493/1920.jpg" srcset="
+                            https://photo.kirk.one/2021/012493/640.jpg 640w,
+                            https://photo.kirk.one/2021/012493/1024.jpg 1024w,
+                            https://photo.kirk.one/2021/012493/1280.jpg 1280w,
+                            https://photo.kirk.one/2021/012493/1920.jpg 1920w,
+                            https://photo.kirk.one/2021/012493/2560.jpg 2560w,
+                            https://photo.kirk.one/2021/012493/3840.jpg 3840w
+                            " width="3840" height="2560" alt="Ein Bild" sizes="100vw, 100vh">
+                </a>
+            </div>
+        </article>
+        <article id="dsc03417" tabindex="0" style="--width:3840; --height:2560;">
+            <div>
+                <img loading="lazy" src="https://photo.kirk.one/2021/012480/1920.jpg" srcset="
+                        https://photo.kirk.one/2021/012480/640.jpg 640w,
+                        https://photo.kirk.one/2021/012480/1024.jpg 1024w,
+                        https://photo.kirk.one/2021/012480/1280.jpg 1280w,
+                        https://photo.kirk.one/2021/012480/1920.jpg 1920w,
+                        https://photo.kirk.one/2021/012480/2560.jpg 2560w,
+                        https://photo.kirk.one/2021/012480/3840.jpg 3840w
+                    " width="3840" height="2560" alt="Ein Bild" sizes="100vw, 100vh">
+            </div>
+        </article>
+        <article id="dsc02538" tabindex="0" style="--width:3840; --height:2560;">
+            <div>
+                <img loading="lazy" src="https://photo.kirk.one/2021/012441/1920.jpg" srcset="
+                        https://photo.kirk.one/2021/012441/640.jpg 640w,
+                        https://photo.kirk.one/2021/012441/1024.jpg 1024w,
+                        https://photo.kirk.one/2021/012441/1280.jpg 1280w,
+                        https://photo.kirk.one/2021/012441/1920.jpg 1920w,
+                        https://photo.kirk.one/2021/012441/2560.jpg 2560w,
+                        https://photo.kirk.one/2021/012441/3840.jpg 3840w
+                    " width="3840" height="2560" alt="Ein Bild" sizes="100vw, 100vh">
+            </div>
+        </article>
+        <article id="dsc05352" tabindex="0" style="--width:3840; --height:2560;">
+            <div>
+                <img loading="lazy" src="https://photo.kirk.one/2021/012410/1920.jpg" srcset="
+                        https://photo.kirk.one/2021/012410/640.jpg 640w,
+                        https://photo.kirk.one/2021/012410/1024.jpg 1024w,
+                        https://photo.kirk.one/2021/012410/1280.jpg 1280w,
+                        https://photo.kirk.one/2021/012410/1920.jpg 1920w,
+                        https://photo.kirk.one/2021/012410/2560.jpg 2560w,
+                        https://photo.kirk.one/2021/012410/3840.jpg 3840w
+                    " width="3840" height="2560" alt="Ein Bild" sizes="100vw, 100vh">
+            </div>
+        </article>
+        <article id="dsc05186" tabindex="0" style="--width:2560; --height:3840;">
+            <div>
+                <img loading="lazy" src="https://photo.kirk.one/2021/011824/1920.jpg" srcset="
+                        https://photo.kirk.one/2021/011824/640.jpg 640w,
+                        https://photo.kirk.one/2021/011824/1024.jpg 1024w,
+                        https://photo.kirk.one/2021/011824/1280.jpg 1280w,
+                        https://photo.kirk.one/2021/011824/1920.jpg 1920w,
+                        https://photo.kirk.one/2021/011824/2560.jpg 2560w,
+                        https://photo.kirk.one/2021/011824/3840.jpg 3840w
+                    " width="2560" height="3840" alt="Ein Bild" sizes="100vw, 100vh">
+            </div>
+        </article>
+        <article>
+            <div class="devider">
+                <h3>2018</h3>
+                <h2>Ich bin ein toller Text</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ipsum explicabo pariatur
+                    doloribus assumenda, temporibus voluptatibus, a quaerat atque odit sint, animi cupiditate nam
+                    adipisci sit blanditiis nostrum inventore aspernatur.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ipsum explicabo pariatur
+                    doloribus assumenda, temporibus voluptatibus, a quaerat atque odit sint, animi cupiditate nam
+                    adipisci sit blanditiis nostrum inventore aspernatur.</p>
+            </div>
+        </article>
+        <article style="--width:3840; --height:2560;">
+            <div>
+                <img loading="lazy" src="https://photo.kirk.one/2020/011314/1920.jpg" srcset="
+                        https://photo.kirk.one/2020/011314/640.jpg 640w,
+                        https://photo.kirk.one/2020/011314/1024.jpg 1024w,
+                        https://photo.kirk.one/2020/011314/1280.jpg 1280w,
+                        https://photo.kirk.one/2020/011314/1920.jpg 1920w,
+                        https://photo.kirk.one/2020/011314/2560.jpg 2560w,
+                        https://photo.kirk.one/2020/011314/3840.jpg 3840w
+                    " width="3840" height="2560" alt="Ein Bild" sizes="100vw, 100vh">
+            </div>
+        </article>
+        <article style="--width:3840; --height:2560;">
+            <div>
+                <img loading="lazy" src="https://photo.kirk.one/2020/011232/1920.jpg" srcset="
+                        https://photo.kirk.one/2020/011232/640.jpg 640w,
+                        https://photo.kirk.one/2020/011232/1024.jpg 1024w,
+                        https://photo.kirk.one/2020/011232/1280.jpg 1280w,
+                        https://photo.kirk.one/2020/011232/1920.jpg 1920w,
+                        https://photo.kirk.one/2020/011232/2560.jpg 2560w,
+                        https://photo.kirk.one/2020/011232/3840.jpg 3840w
+                    " width="3840" height="2560" alt="Ein Bild" sizes="100vw, 100vh">
+            </div>
+        </article>
+        <article>
+            <div class="devider">
+                <h3>Test</h3>
+            </div>
+        </article>
+        <article style="--width:3840; --height:2560;">
+            <div>
+                <img loading="lazy" src="https://photo.kirk.one/2020/011220/1920.jpg" srcset="
+                        https://photo.kirk.one/2020/011220/640.jpg 640w,
+                        https://photo.kirk.one/2020/011220/1024.jpg 1024w,
+                        https://photo.kirk.one/2020/011220/1280.jpg 1280w,
+                        https://photo.kirk.one/2020/011220/1920.jpg 1920w,
+                        https://photo.kirk.one/2020/011220/2560.jpg 2560w,
+                        https://photo.kirk.one/2020/011220/3840.jpg 3840w
+                    " width="3840" height="2560" alt="Ein Bild" sizes="100vw, 100vh">
+            </div>
+        </article>
+        <article style="--width:3840; --height:2560;">
+            <div>
+                <img loading="lazy" src="https://photo.kirk.one/2020/010931/1920.jpg" srcset="
+                        https://photo.kirk.one/2020/010931/640.jpg 640w,
+                        https://photo.kirk.one/2020/010931/1024.jpg 1024w,
+                        https://photo.kirk.one/2020/010931/1280.jpg 1280w,
+                        https://photo.kirk.one/2020/010931/1920.jpg 1920w,
+                        https://photo.kirk.one/2020/010931/2560.jpg 2560w,
+                        https://photo.kirk.one/2020/010931/3840.jpg 3840w
+                    " width="3840" height="2560" alt="Ein Bild" sizes="100vw, 100vh">
+            </div>
+        </article>
+        <article>
+            <div class="devider">
+                <h3>Ende!</h3>
+            </div>
+        </article>
+    </section>
+-->
+    <script src="/scripts/main.ts" type="module"></script>
+</body>
+
+</html>

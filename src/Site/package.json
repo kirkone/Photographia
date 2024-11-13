@@ -1,0 +1,20 @@
+{
+  "name": "photographia.site",
+  "version": "1.0.0",
+  "description": "A web site to show images in a clean way.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kirkone/Photographia.git"
+  },
+  "devDependencies": {
+  },
+  "dependencies": {}
+}

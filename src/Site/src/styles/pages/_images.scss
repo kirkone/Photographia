@@ -1,0 +1,183 @@
+main {
+    grid-column: content;
+    margin-top: calc(var(--padding)* 3);
+
+    >h1 {
+        margin: 0 calc(var(--padding) * -1) calc(var(--padding) * 2) calc(var(--padding) * -1);
+        padding: 0 var(--padding);
+        font-size: var(--font-size-4);
+        letter-spacing: 0.1em;
+        font-weight: 100;
+        border-bottom: solid 1px hsl(var(--color-hsl) / 0.3);
+    }
+
+    >h2 {
+        margin: 0 calc(var(--padding) * -1) calc(var(--padding) * 2) calc(var(--padding) * -1);
+        padding: 0 var(--padding);
+        font-size: var(--font-size-3);
+        letter-spacing: 0.1em;
+        font-weight: 100;
+        border-bottom: solid 1px hsl(var(--color-hsl) / 0.3);
+    }
+
+    >p {
+        margin-bottom: 1rem;
+        font-size: var(--font-size-2);
+        letter-spacing: 0.02em;
+    }
+
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        grid-gap: var(--gap);
+        position: relative;
+        //overflow: hidden;
+        margin: 0 calc(var(--padding) * -1) 0 calc(var(--padding) * -1);
+
+        >article {
+            flex-grow: calc(var(--width) * (100000 / var(--height)));
+            flex-basis: calc(20rem * (var(--width) / var(--height)));
+            position: relative;
+            background-color: hsl(var(--color-background-hsl));
+            outline: solid var(--gap) hsl(var(--color-background-hsl));
+
+            cursor: zoom-in;
+
+            >picture {
+                aspect-ratio: var(--width) / calc(var(--height)* 2);
+                display: inline-block;
+                // fix for the blank space below the image
+                vertical-align: top;
+
+                margin-bottom: max(-100% / (var(--width) / var(--height)), max(-100dvh, var(--height) * -1px));
+            }
+
+            img {
+                max-width: 100%;
+                max-height: 100vh;
+                height: auto;
+                object-fit: contain;
+                margin: auto;
+                display: block;
+                position: sticky;
+                top: var(--head-size);
+            }
+
+            picture+aside {
+                opacity: 0;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: calc(2 * var(--padding));
+                display: flex;
+                justify-content: center;
+                gap: 1em;
+                font-size: var(--font-size-1);
+                line-height: calc(2 * var(--padding));
+                transition: none;
+                z-index: 350;
+                pointer-events: none;
+            }
+
+            figure {
+
+                display: flex;
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 300;
+                transition: opacity 270ms ease-in-out, visibility 270ms ease-in-out;
+
+                opacity: 0;
+                visibility: hidden;
+
+                justify-content: center;
+                align-items: center;
+
+                background-color: hsl(var(--color-background-hsl) / 0.8);
+                -webkit-backdrop-filter: saturate(180%) blur(2rem);
+                backdrop-filter: saturate(180%) blur(2rem);
+
+                cursor: default;
+
+                >a {
+                    position: absolute;
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                    text-indent: 100%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    cursor: zoom-out;
+
+                    &::after {
+                        content: "+";
+                        position: fixed;
+                        top: 1rem;
+                        right: 1.5rem;
+                        z-index: 101;
+                        color: hsl(var(--color-hsl));
+                        cursor: pointer;
+                        font-size: 4rem;
+                        font-weight: 100;
+                        text-indent: 0;
+
+                        border-radius: 1rem;
+                        height: 2rem;
+                        line-height: 1.2rem;
+                        overflow: hidden;
+
+                        transform: rotate(45deg);
+
+                        animation: fadeIn 250ms both;
+                    }
+                }
+
+                img {
+                    display: none;
+                    outline: none;
+                }
+            }
+
+            &:focus,
+            &:target {
+                >picture {
+                    +aside {
+                        opacity: 1;
+                        transition: opacity 250ms linear;
+                    }
+                }
+
+                figure {
+
+                    visibility: visible;
+                    opacity: 1;
+
+                    img {
+                        position: relative;
+                        top: 0;
+                        display: block;
+                        width: auto;
+                        height: auto;
+                        max-width: 100vw;
+                        max-height: 100vh;
+                        padding-top: calc(2 * var(--padding));
+                        padding-bottom: calc(2 * var(--padding));
+                        max-height: calc(100vh - (1 * var(--padding)));
+
+                        animation: fadeIn 500ms both;
+                    }
+                }
+            }
+        }
+
+        &:after {
+            content: " ";
+            flex-grow: 1000000000;
+            background: hsl(var(--color-background-hsl));
+        }
+    }
+}
