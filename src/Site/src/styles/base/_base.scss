@@ -1,31 +1,61 @@
 @use 'typography';
 
-html {
-    overflow: hidden;
-}
-
-body {
-    font-family: typography.$font;
-    font-weight: typography.$font-weight;
-
-    background-color: hsl(var(--color-background-hsl));
-    color: hsl(var(--color-hsl));
-
+html{
+    scrollbar-gutter: stable;
     position: relative;
     height: 100dvh;
-
-    display: grid;
-    grid-template-columns:
-        [full-width-start] minmax(var(--padding), 1fr) [breakout-start] minmax(0, var(--breakout-size)) [content-start] min(100% - (var(--padding) * 2),
-            var(--content-max-width)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(var(--padding), 1fr) [full-width-end];
-
-    overflow: auto;
-    background-color: hsl(var(--color-background-hsl));
-    scrollbar-gutter: stable;
-
+    
     &:has(.nav-trigger:checked),
     &:has(.nav-trigger ~ #nav:focus-within),
-    &:has(.gallery > article:focus) {
-        overflow: hidden;
+    &:has(.gallery > article:focus){
+      overflow: clip;
     }
-}
+  }
+  
+  body {
+    font-family: typography.$font;
+    font-weight: typography.$font-weight;
+    
+    background-color: hsl(var(--color-background-hsl));
+    color: hsl(var(--color-hsl));
+    
+    position: relative;
+    
+    display: grid;
+    grid-template-columns:
+      [full-width-start] minmax(var(--space-s), 1fr)
+      [breakout-start] minmax(0, var(--breakout-size))
+      [content-start] min(
+        100% - (var(--space-s) * 2),
+        var(--content-max-width)
+      )
+      [content-end]
+      minmax(0, var(--breakout-size)) [breakout-end]
+      minmax(var(--space-s), 1fr) [full-width-end];
+    
+  
+    background-color: hsl(var(--color-background-hsl));
+  
+    
+    &:before{
+      content: " ";
+      height: 1px;
+      position: fixed;
+      top: 1px;
+      left: 1px;
+      z-index: 251;
+      background-color: hsl(var(--color-hsl) / 0.3);
+      width: calc(100% - 2px );
+      scale: 0 1;
+      transform-origin: top left;
+      animation: scroll-watcher linear;
+      animation-timeline: scroll(block nearest);
+      
+      @keyframes scroll-watcher {
+        to {
+          scale: 1 1;
+        }
+      }
+    }
+  }
+  

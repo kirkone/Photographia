@@ -6,8 +6,11 @@
 label[for=nav-trigger] {
     white-space: nowrap;
     cursor: pointer;
+    user-select: none;
     -webkit-tap-highlight-color: transparent;
-    transition: transform 270ms ease-in-out;
+    transition-property: transform, color, border-bottom;
+    transition-duration: var(--animation-time);
+    transition-timing-function: ease-in-out;
 
     display: inline-flex;
 
@@ -20,8 +23,8 @@ label[for=nav-trigger] {
     }
 
     span {
-        transition: transform 270ms ease-in-out,
-            opacity 270ms ease-in-out;
+        transition: transform var(--animation-time) ease-in-out,
+            opacity var(--animation-time) ease-in-out;
 
         &:first-child {
             display: none;
@@ -46,29 +49,31 @@ label[for=nav-trigger] {
     }
 }
 
-menu {
+body>menu {
     grid-column: full-width;
     position: fixed;
     height: 100dvh;
     width: 100dvw;
     z-index: 200;
-    display: flex;
+    display: none;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
     justify-content: center;
-    gap: var(--padding);
+    gap: var(--space-l);
 
-    transition: opacity 270ms ease-in-out, visibility 270ms ease-in-out;
-
+    transition-property: display, opacity;
+    transition-duration: var(--animation-time);
+    transition-timing-function: ease-in-out;
+    transform-style: ease-in-out;
+    transition-behavior: allow-discrete;
     opacity: 0;
-    visibility: hidden;
 
     background-color: hsl(var(--color-background-hsl) / 0.8);
     -webkit-backdrop-filter: saturate(180%) blur(2rem);
     backdrop-filter: saturate(180%) blur(2rem);
 
-    padding-top: calc(var(--padding) * 6);
+    padding-top: var(--space-3xl);
 
     section {
         display: flex;
@@ -80,17 +85,24 @@ menu {
         h3 {
             font-weight: 100;
             font-size: var(--font-size-3);
-            margin-bottom: var(--padding);
+            margin-bottom: var(--space-s);
         }
 
         a {
             font-weight: 100;
             font-size: var(--font-size-3);
             text-decoration: none;
-
             color: hsl(var(--color-light-hsl));
 
+            transition-property: color, border-bottom;
+            transition-duration: var(--animation-time);
+            transition-timing-function: ease-in-out;
+
             &:hover {
+                color: hsl(var(--color-dark-hsl));
+            }
+
+            &.active {
                 color: hsl(var(--color-dark-hsl));
             }
         }
@@ -99,7 +111,20 @@ menu {
 
 menu:focus-within,
 .nav-trigger:checked~menu {
+    display: flex;
     opacity: 1;
-    visibility: visible;
+    align-content: center;
+
+    @starting-style {
+        opacity: 0;
+    }
 }
 
+menu:focus-within~header,
+.nav-trigger:checked~header {
+
+    nav,
+    form {
+        opacity: 0;
+    }
+}

@@ -2,19 +2,25 @@ header {
     grid-column: full-width;
 
     display: grid;
+    align-items: center;
     grid-template-columns: inherit;
 
     z-index: 250;
     background-color: hsl(var(--color-background-hsl));
-    height: var(--head-size);
     position: sticky;
     top: 0;
+    margin-top: var(--space-xl);
+    padding-bottom: var(--space-xs);
+
+    height: calc(var(--space-xl) + var(--space-xs));
 
     div {
-        grid-column: breakout;
+        grid-column: content;
         display: flex;
+        gap: var(--space-s);
         justify-content: space-between;
-        align-items: baseline;
+        align-items: flex-end;
+        flex-wrap: wrap;
 
         h2 {
             font-size: var(--font-size-4);
@@ -22,25 +28,109 @@ header {
             font-weight: 100;
         }
 
+        >form {
+            position: relative;
+            flex-grow: 1;
+            transition-property: width, opacity;
+            transition-duration: var(--animation-time);
+            transition-timing-function: ease-in-out;
+
+            input[type="search"] {
+                all: unset;
+                background-color: none;
+                font-size: var(--font-size-3);
+                font-weight: 100;
+                border: none;
+                width: 100%;
+                transition-property: border-bottom, background-color;
+                transition-duration: var(--animation-time);
+                transition-timing-function: ease-in-out;
+                outline: none;
+                border-bottom: solid 1px hsl(var(--color-hsl) / 0);
+
+                &:focus,
+                &:not(:placeholder-shown) {
+                    color: hsl(var(--color-light-hsl));
+                    border-bottom: solid 1px hsl(var(--color-hsl) / 0.3);
+                }
+
+                &:not(:placeholder-shown):not(:focus) {
+                    color: hsl(var(--color-light-hsl) / 0.5);
+                    border-bottom: solid 1px hsl(var(--color-hsl) / 0.1);
+                }
+
+                /* clears the ‘X’ from Chrome */
+                &::-webkit-search-decoration,
+                &::-webkit-search-cancel-button,
+                &::-webkit-search-results-button,
+                &::-webkit-search-results-decoration {
+                    appearance: none;
+                }
+            }
+
+            >label,
+            >button {
+                all: unset;
+                cursor: pointer;
+                position: absolute;
+                width: var(--font-size-1);
+                right: 0;
+                top: 50%;
+                translate: 0 -35%;
+                color: hsl(var(--color-light-hsl));
+                opacity: 0;
+                pointer-events: none;
+                visibility: hidden;
+                transition-behavior: discrete;
+                transition-property: opacity, visibility, color;
+                transition-duration: var(--animation-time);
+                transition-timing-function: ease-in-out;
+
+                &:hover {
+                    color: hsl(var(--color-dark-hsl));
+                }
+            }
+
+            &:has(input[type="search"]:placeholder-shown)>label,
+            &:has(input[type="search"]:not(:placeholder-shown))>button {
+                opacity: 1;
+                pointer-events: all;
+                visibility: visible;
+            }
+        }
+
         nav {
             display: flex;
             justify-content: flex-end;
             flex-direction: row;
             flex-wrap: wrap;
-            gap: var(--padding);
+            gap: var(--space-s);
             font-size: var(--font-size-3);
+            opacity: 1;
+            transition-property: opacity;
+            transition-duration: var(--animation-time);
+            transition-timing-function: ease-in-out;
         }
 
         a {
-
             color: hsl(var(--color-light-hsl));
             text-decoration: none;
-
             border-bottom: solid 1px hsl(var(--color-hsl) / 0.1);
+            transition-property: color, border-bottom;
+            transition-duration: var(--animation-time);
+            transition-timing-function: ease-in-out;
 
             &:hover {
                 color: hsl(var(--color-dark-hsl));
                 border-bottom: solid 1px hsl(var(--color-hsl) / 0.3);
+            }
+        }
+
+        @media (width <=600px) {
+
+            nav,
+            form {
+                display: none;
             }
         }
     }
